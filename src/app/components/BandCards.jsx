@@ -9,7 +9,7 @@ export default async function BandCards() {
 
   return (
     <div className="grid grid-cols-3 gap-2">
-      {data.map((bands) => (
+      {data.slice(0, 16).map((bands) => (
         <Link
           key={bands.slug}
           href={`/${bands.slug}`}
@@ -17,16 +17,32 @@ export default async function BandCards() {
           prefetch={false}
         >
           <h3> {bands.name}</h3>
-          {/* <Image
-            src={`/${bands.logo}`}
+          <Image
+            src={`/logos/${bands.logo}`}
             width={250}
             height={250}
             alt="Logo For the Band"
             priority={true}
-          /> */}
+          />
         </Link>
       ))}
-      ;
+      {data.slice(16).map((bands) => (
+        <Link
+          key={bands.slug}
+          href={`/${bands.slug}`}
+          className="border-2"
+          prefetch={false}
+        >
+          <h3> {bands.name}</h3>
+          <Image
+            src={bands.logo}
+            width={250}
+            height={250}
+            alt="Logo For the Band"
+            priority={true}
+          />
+        </Link>
+      ))}
     </div>
   );
 }
