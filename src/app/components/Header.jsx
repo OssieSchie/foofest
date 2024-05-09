@@ -4,8 +4,10 @@ import Link from 'next/link'
 function Header() {
   return (
         <nav>
-            <Link href="/" > Forside </Link>
-            <Link href="/stages" > Schedule </Link>
+            <a href="/" > Forside </a>
+            <a href="/stages" > Schedule </a>
+            {/* <Link href="/" > Forside </Link>
+            <Link href="/stages/page.jsx" > Schedule </Link> */}
         </nav>
   )
 }
