@@ -6,7 +6,7 @@ export async function getAllBands() {
 }
 
 export async function getBandsBySlug(slug) {
-  const res = await fetch(`${rootUrl}?slug=${slug}`);
+  const res = await fetch(`${rootUrl}/bands?slug=${slug}`);
   return await res.json();
 }
 
