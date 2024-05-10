@@ -8,41 +8,47 @@ export default async function BandCards() {
   //   console.log(data);
 
   return (
-    <div className="grid grid-cols-3 gap-2">
+    <article className="grid sm:grid-cols-1 md:grid-cols-4 gap-2 md:mx-12 mx-0">
       {data.slice(0, 16).map((bands) => (
-        <Link
+        <div
           key={bands.slug}
-          href={`/${bands.slug}`}
-          className="border-2"
-          prefetch={false}
+          className="relative transition-transform duration-300 ease-in-out transform hover:scale-95"
         >
-          <h3> {bands.name}</h3>
-          <Image
-            src={`/logos/${bands.logo}`}
-            width={250}
-            height={250}
-            alt="Logo For the Band"
-            priority={true}
-          />
-        </Link>
+          <Link href={`/${bands.slug}`} prefetch={false}>
+            <h4 className="absolute bottom-0 left-0 w-full bg-black bg-opacity-25 text-white text-center p-2">
+              {bands.name}
+            </h4>
+            <Image
+              src={`/logos/${bands.logo}`}
+              width={250}
+              height={250}
+              alt="Logo For the Band"
+              priority={true}
+              className="h-full w-full object-cover"
+            />
+          </Link>
+        </div>
       ))}
       {data.slice(16).map((bands) => (
-        <Link
+        <div
           key={bands.slug}
-          href={`/${bands.slug}`}
-          className="border-2"
-          prefetch={false}
+          className="relative transition-transform duration-300 ease-in-out transform hover:scale-95"
         >
-          <h3> {bands.name}</h3>
-          <Image
-            src={bands.logo}
-            width={250}
-            height={250}
-            alt="Logo For the Band"
-            priority={true}
-          />
-        </Link>
+          <Link href={`/${bands.slug}`} prefetch={false}>
+            <h4 className="absolute bottom-0 left-0 w-full bg-black bg-opacity-25 text-white text-center p-2">
+              {bands.name}
+            </h4>
+            <Image
+              src={bands.logo}
+              width={500}
+              height={500}
+              alt="Logo For the Band"
+              priority={true}
+              className="h-full w-full object-cover"
+            />
+          </Link>
+        </div>
       ))}
-    </div>
+    </article>
   );
 }
