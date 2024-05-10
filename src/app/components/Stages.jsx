@@ -1,11 +1,11 @@
-import React from 'react'
+import React from "react";
 
-function Stages() {
+function Stages(name, props) {
   return (
     <div>
-      
+      <h2>{name}</h2>
     </div>
-  )
+  );
 }
 
-export default Stages
+export default Stages;
