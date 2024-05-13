@@ -14,7 +14,7 @@ export default async function Home() {
   // console.log(data3);
 
   return (
-    <main className="gap-5 mx-5 md:mx-20 contents">
+    <main className="mx-5 md:mx-20 contents">
       <FrontPageIntroCard></FrontPageIntroCard>
       <BandCards></BandCards>
     </main>
