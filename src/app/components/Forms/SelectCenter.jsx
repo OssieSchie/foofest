@@ -9,7 +9,7 @@ export default function SelectCenter(props) {
         id={props.id}
         name={props.id}
         value={props.value}
-        checked={props.checked}
+        // checked={props.checked}
       />
       <p>{props.cost}</p>
     </div>

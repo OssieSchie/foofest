@@ -32,30 +32,22 @@ export default function SelectAmount() {
               label="No Thanks"
               id="0pers"
               value="0"
-              checked
+              //   checked - FIX!
               cost="0 kr."
             />
             <SelectCenter
               label="2 Person Tent"
               id="2pers"
               value="2"
-              checked
               cost="299 kr."
             />
             <SelectCenter
               label="3 Person Tent"
               id="3pers"
               value="3"
-              checked
               cost="399 kr."
             />
-            <SelectCenter
-              label="No Thanks"
-              id="0pers"
-              value="0"
-              checked
-              cost="0 kr."
-            />
+            <SelectCenter label="No Thanks" id="0pers" value="0" cost="0 kr." />
           </fieldset>
         </div>
       </fieldset>
