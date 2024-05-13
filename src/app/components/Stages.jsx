@@ -1,16 +1,16 @@
 "use client";
-// import { useState } from "react";
+import { useState } from "react";
 import ScheduleBtn from "./ScheduleBtn";
 import DaySchedule from "./DaySchedule";
 
 // async function Stages(props) {
 function Stages({ name, mon, tue, wed, thu, fri, sat, sun }) {
-  // const [day, setDay] = useState(mon);
-  let day = mon;
+  const [day, setDay] = useState(mon);
+  // let day = mon;
 
-  function setDay(newDay) {
-    day = newDay;
-    console.log(newDay);
+  function daySetter(newDay) {
+    // console.log(newDay);
+    setDay(newDay);
   }
 
   return (
@@ -18,15 +18,49 @@ function Stages({ name, mon, tue, wed, thu, fri, sat, sun }) {
       <h2>{name}</h2>
       <div>
         <div className="grid grid-cols-7">
-          <button onClick={() => (day = mon)}>Monday</button>
-          <button onClick={() => (day = tue)}>Tuesday</button>
-          {/* <ScheduleBtn day={"Monday"} value={"mon"} /> */}
-          {/* <ScheduleBtn day={"Tuesday"} value={"tue"} /> */}
-          <ScheduleBtn day={"Wednesday"} value={"wed"} />
-          <ScheduleBtn day={"Thursday"} value={"thu"} />
-          <ScheduleBtn day={"Friday"} value={"fri"} />
-          <ScheduleBtn day={"Saturday"} value={"sat"} />
-          <ScheduleBtn day={"Sunday"} value={"sun"} />
+          <button onClick={() => daySetter(mon)}>Monday</button>
+          <button
+            onClick={() => {
+              daySetter(tue);
+            }}
+          >
+            Tuesday
+          </button>
+          <button
+            onClick={() => {
+              daySetter(wed);
+            }}
+          >
+            Wednesday
+          </button>
+          <button
+            onClick={() => {
+              daySetter(thu);
+            }}
+          >
+            Thursday
+          </button>
+          <button
+            onClick={() => {
+              daySetter(fri);
+            }}
+          >
+            Friday
+          </button>
+          <button
+            onClick={() => {
+              daySetter(sat);
+            }}
+          >
+            Saturday
+          </button>
+          <button
+            onClick={() => {
+              daySetter(sun);
+            }}
+          >
+            Sunday
+          </button>
         </div>
       </div>
       {day === mon && <DaySchedule name={"Monday"} info={mon} />}
