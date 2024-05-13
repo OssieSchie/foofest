@@ -8,7 +8,7 @@ export default async function BandCards() {
   //   console.log(data);
 
   return (
-    <article className="grid sm:grid-cols-1 md:grid-cols-4 gap-2 md:mx-12 mx-0">
+    <article className="grid sm:grid-cols-1 md:grid-cols-4 gap-2 md:mx-24 mx-1">
       {data.slice(0, 16).map((bands) => (
         <div
           key={bands.slug}
