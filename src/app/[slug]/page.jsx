@@ -1,4 +1,4 @@
-import { getBandsBySlug } from "@/app/lib/api";
+import { getBandsBySlug, getFlatSchedule } from "@/app/lib/api";
 import React from "react";
 import Image from "next/image";
 
@@ -6,7 +6,26 @@ async function bandPage({ params }) {
   const { slug } = params;
   const data = await getBandsBySlug(slug);
 
-  console.log(data);
+  const scheduleData = await getFlatSchedule();
+
+  const filteredData = scheduleData.filter((item) => item.act === data.name);
+
+  function replaceDayAbbreviations(dayAbbreviation) {
+    const dayArr = {
+      mon: "Monday",
+      tue: "Tuesday",
+      wed: "Wednesday",
+      thu: "Thursday",
+      fri: "Friday",
+      sat: "Saturday",
+      sun: "Sunday",
+    };
+
+    return dayArr[dayAbbreviation] || dayAbbreviation;
+  }
+
+  // console.log(filteredData);
+  // console.log(scheduleData);
 
   return (
     <div>
@@ -29,6 +48,17 @@ async function bandPage({ params }) {
           priority={true}
         /> // Image stored in public folder
       )}
+      <h3>Playing at:</h3>
+      {filteredData.map((item, index) => (
+        <div key={index}>
+          <p>{item.stage}</p>
+          <h3>Time: </h3>
+          <p>{replaceDayAbbreviations(item.day)}</p>
+          <p>
+            {item.start} - {item.end}
+          </p>
+        </div>
+      ))}
     </div>
   );
 }
