@@ -1,4 +1,4 @@
-const rootUrl = "http://localhost:8080";
+const rootUrl = "http://quilled-awesome-sail.glitch.me";
 
 export async function getAllBands() {
   const res = await fetch(`${rootUrl}/bands`);
@@ -42,6 +42,8 @@ export async function reserveSpot(areaInput, amountInput) {
   });
 
   let data = await response.json();
+  console.log(data);
+
   return data;
 }
 
