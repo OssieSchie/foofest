@@ -34,7 +34,7 @@ export default function BandCards(props) {
   //   console.log(uniqueGenresArray);
   return (
     <section className="flex flex-col gap-5">
-      <h2>Choose a genre to view</h2>
+      <button>Choose a genre to view</button>
       <article className="grid sm:grid-cols-1 md:grid-cols-3 gap-2 md:mx-24 mx-1">
         {uniqueGenresArray.map((g, index) => (
           <button
