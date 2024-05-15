@@ -1,4 +1,4 @@
-const rootUrl = "http://quilled-awesome-sail.glitch.me";
+const rootUrl = "http://localhost:8080";
 
 export async function getAllBands() {
   const res = await fetch(`${rootUrl}/bands`);
@@ -41,11 +41,46 @@ export async function reserveSpot(areaInput, amountInput) {
     headers: headersList,
   });
 
-  let data = await response.json();
+  let data = await response.text();
   console.log(data);
 
   return data;
 }
+
+// export async function reserveSpot(areaInput, amountInput) {
+//   const headersList = {
+//     Accept: "*/*",
+//     "User-Agent": "Thunder Client (https://www.thunderclient.com)",
+//     "Content-Type": "application/json",
+//   };
+
+//   const bodyContent = JSON.stringify({
+//     area: areaInput,
+//     amount: amountInput,
+//   });
+
+//   try {
+//     const response = await fetch(`${rootUrl}/reserve-spot`, {
+//       method: "PUT",
+//       body: bodyContent,
+//       headers: headersList,
+//     });
+
+//     if (!response.ok) {
+//       // Handle HTTP errors
+//       throw new Error(`HTTP error! status: ${response.status}`);
+//     }
+
+//     const data = await response.text();
+//     console.log(data);
+
+//     return data;
+//   } catch (error) {
+//     // Handle fetch errors
+//     console.error("Error during PUT request:", error);
+//     throw error;
+//   }
+// }
 
 export async function completeReservation(id) {
   let headersList = {

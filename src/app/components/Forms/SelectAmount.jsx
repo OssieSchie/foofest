@@ -14,7 +14,7 @@ export default function SelectAmount(props) {
   } = useForm();
 
   const onSubmit = (data) => reserveSpot(data.area, data.amount);
-  // NOT WORKING !!!!
+  // NOT WORKING !!!!  check måske next.config.mjs
 
   return (
     <form className="flex flex-row gap-6 p-5" onSubmit={handleSubmit(onSubmit)}>
