@@ -13,10 +13,12 @@ export default async function Home() {
   // const data3 = await completeReservation(data2.id);
   // console.log(data3);
 
+  const data = await getAllBands();
+
   return (
     <main className="mx-5 md:mx-20 contents">
       <FrontPageIntroCard></FrontPageIntroCard>
-      <BandCards></BandCards>
+      <BandCards data={data}></BandCards>
     </main>
   );
 }
