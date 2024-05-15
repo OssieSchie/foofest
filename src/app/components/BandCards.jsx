@@ -4,9 +4,11 @@ import { getAllBands } from "@/app/lib/api";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import styles from "./BandCards.module.css";
 
 export default function BandCards(props) {
   const [selectedGenre, setSelectedGenre] = useState(null);
+  const [expanded, setExpanded] = useState(false);
 
   const data = props.data;
   const uniqueGenresArray = [];
@@ -24,6 +26,10 @@ export default function BandCards(props) {
     setSelectedGenre(null);
   };
 
+  const expand = () => {
+    setExpanded((expand) => !expand);
+  };
+
   // kører gennem alle genrene og tilføjer 1 af hver genrer til ny array
   data.map((bands) => {
     if (!uniqueGenresArray.includes(bands.genre)) {
@@ -34,8 +40,14 @@ export default function BandCards(props) {
   //   console.log(uniqueGenresArray);
   return (
     <section className="flex flex-col gap-5">
-      <button>Choose a genre to view</button>
-      <article className="grid sm:grid-cols-1 md:grid-cols-3 gap-2 md:mx-24 mx-1">
+      <button onClick={expand} className="underline">
+        Choose a genre to view
+      </button>
+      <article
+        className={`${
+          expanded ? styles.open : styles.closed
+        } grid sm:grid-cols-1 md:grid-cols-3 gap-2 md:mx-24 mx-1`}
+      >
         {uniqueGenresArray.map((g, index) => (
           <button
             key={index}

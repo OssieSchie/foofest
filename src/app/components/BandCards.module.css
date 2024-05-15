@@ -1,0 +1,7 @@
+.closed {
+  height: 0;
+  overflow: clip;
+}
+.open {
+  padding: 0.5rem;
+}
