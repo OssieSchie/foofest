@@ -13,7 +13,7 @@ export default async function page() {
   // console.log(data);
   return (
     <main>
-      <section>
+      <section className="md:max-w-7xl mx-auto">
         <SelectAmount areas={data} />
         {/* <FillTicket />
         <BillingInfo />

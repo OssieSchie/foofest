@@ -24,63 +24,27 @@ export async function getAllAvailableSpots() {
 }
 
 export async function reserveSpot(areaInput, amountInput) {
-  let headersList = {
-    Accept: "*/*",
-    "User-Agent": "Thunder Client (https://www.thunderclient.com)",
-    "Content-Type": "application/json",
-  };
-
-  let bodyContent = JSON.stringify({
-    area: areaInput,
-    amount: amountInput,
-  });
-
-  let response = await fetch(`${rootUrl}/reserve-spot`, {
+  fetch("http://localhost:8080/reserve-spot", {
     method: "PUT",
-    body: bodyContent,
-    headers: headersList,
-  });
-
-  let data = await response.text();
-  console.log(data);
-
-  return data;
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      area: areaInput,
+      amount: amountInput,
+    }),
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Network response was not ok " + response.statusText);
+      }
+      return response.json();
+    })
+    .then((data) => console.log(data))
+    .catch((err) =>
+      console.error("There has been a problem with your fetch operation:", err)
+    );
 }
-
-// export async function reserveSpot(areaInput, amountInput) {
-//   const headersList = {
-//     Accept: "*/*",
-//     "User-Agent": "Thunder Client (https://www.thunderclient.com)",
-//     "Content-Type": "application/json",
-//   };
-
-//   const bodyContent = JSON.stringify({
-//     area: areaInput,
-//     amount: amountInput,
-//   });
-
-//   try {
-//     const response = await fetch(`${rootUrl}/reserve-spot`, {
-//       method: "PUT",
-//       body: bodyContent,
-//       headers: headersList,
-//     });
-
-//     if (!response.ok) {
-//       // Handle HTTP errors
-//       throw new Error(`HTTP error! status: ${response.status}`);
-//     }
-
-//     const data = await response.text();
-//     console.log(data);
-
-//     return data;
-//   } catch (error) {
-//     // Handle fetch errors
-//     console.error("Error during PUT request:", error);
-//     throw error;
-//   }
-// }
 
 export async function completeReservation(id) {
   let headersList = {
