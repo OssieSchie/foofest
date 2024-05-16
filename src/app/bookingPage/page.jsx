@@ -2,6 +2,7 @@ import React from "react";
 import { getAllAvailableSpots } from "../lib/api";
 // import Progression from "../components/Forms/Progression";
 import SelectAmount from "../components/Forms/SelectAmount";
+import FormWrapper from "../components/Forms/FormWrapper";
 // import Timer from "../components/Forms/Timer";
 // import FillTicket from "../components/Forms/FillTicket";
 // import BillingInfo from "../components/Forms/BillingInfo";
@@ -14,7 +15,8 @@ export default async function page() {
   return (
     <main>
       <section className="md:max-w-7xl mx-auto">
-        <SelectAmount areas={data} />
+        <FormWrapper areas={data} />
+        {/* <SelectAmount areas={data} /> */}
         {/* <FillTicket />
         <BillingInfo />
         <Summary /> */}

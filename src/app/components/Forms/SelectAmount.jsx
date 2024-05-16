@@ -6,7 +6,9 @@ import { useForm } from "react-hook-form";
 import { reserveSpot } from "@/app/lib/api";
 
 export default function SelectAmount(props) {
-  const [userAmount, setUserAmount] = useState(1);
+  const { ticketAmount, setTicketAmount, ...rest } = props;
+
+  // const [userAmount, setUserAmount] = useState(1);
 
   // console.log(props.areas);
 
@@ -41,7 +43,7 @@ export default function SelectAmount(props) {
             type="number"
             placeholder="1"
             {...register("amount", { required: true, minLength: 1 })}
-            onBlur={(e) => setUserAmount(e.target.value)}
+            onChange={(e) => setTicketAmount(e.target.value)}
           />
           {errors.amount && <p>Please select a ticket amount</p>}
         </div>
@@ -61,7 +63,7 @@ export default function SelectAmount(props) {
             <option disabled value="select">
               Select area
             </option>
-            {props.areas.map((area) => (
+            {rest.areas.map((area) => (
               <option
                 key={area.area}
                 value={area.area}
@@ -113,16 +115,16 @@ export default function SelectAmount(props) {
           </label>
 
           <label className="flex flex-col w-28 h-24 text-center justify-around border border-slate-500 rounded-md">
-            Tents for {userAmount}
+            Tents for {ticketAmount}
             <input
               {...register("tents", { required: true })}
               type="radio"
-              value={userAmount}
+              value={ticketAmount}
             />
-            <p>{userAmount * 100 + 99} kr.</p>
+            <p>{ticketAmount * 100 + 99} kr.</p>
           </label>
-          {errors.tents && <p>Please select an amount</p>}
         </div>
+        {errors.tents && <p>Please select an amount</p>}
       </div>
       <div className="h-px w-1/2 bg-slate-500 mx-auto" />
       <input

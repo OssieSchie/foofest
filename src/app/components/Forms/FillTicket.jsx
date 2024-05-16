@@ -1,10 +1,15 @@
 import React from "react";
 import SingleTicket from "./SingleTicket";
 
-export default function FillTicket() {
+export default function FillTicket({ ticketAmount }) {
   return (
     <div>
-      <SingleTicket />
+      <p>please fill out your {ticketAmount} tickets</p>
+      <div className="flex flex-row gap-2">
+        {Array.from({ length: ticketAmount }, (_, index) => (
+          <SingleTicket key={index} />
+        ))}
+      </div>
     </div>
   );
 }
