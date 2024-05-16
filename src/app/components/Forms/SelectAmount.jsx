@@ -7,7 +7,9 @@ import { reserveSpot } from "@/app/lib/api";
 
 export default function SelectAmount(props) {
   const [userAmount, setUserAmount] = useState(1);
-  // console.log(props);
+
+  // console.log(props.areas);
+
   const {
     register,
     handleSubmit,

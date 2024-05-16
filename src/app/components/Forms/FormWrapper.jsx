@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 // import Progression from "../components/Forms/Progression";
 import SelectAmount from "./SelectAmount";
@@ -6,10 +8,10 @@ import SelectAmount from "./SelectAmount";
 // import BillingInfo from "../components/Forms/BillingInfo";
 // import Summary from "../components/Forms/Summary";
 
-export default function FormWrapper({ data }) {
+export default function FormWrapper(props) {
   return (
     <section className="md:max-w-7xl mx-auto">
-      <SelectAmount areas={data} />
+      <SelectAmount {...props} />
       {/* <FillTicket />
     <BillingInfo />
     <Summary /> */}
