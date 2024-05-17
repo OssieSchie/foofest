@@ -31,6 +31,14 @@ export default function SelectAmount(props) {
   };
   // NOT WORKING !!!!  check måske next.config.mjs
 
+  function checkTicketAmount(evt) {
+    if (evt < 1) {
+      setTicketAmount(1);
+    } else {
+      setTicketAmount(evt);
+    }
+  }
+
   return (
     <form
       className="grid grid-cols-1 grid-rows-[min-content_1fr] gap-10 p-5 "
@@ -43,9 +51,9 @@ export default function SelectAmount(props) {
             type="number"
             placeholder="1"
             {...register("amount", { required: true, minLength: 1 })}
-            onChange={(e) => setTicketAmount(e.target.value)}
+            onChange={(e) => checkTicketAmount(e.target.value)}
           />
-          {errors.amount && <p>Please select a ticket amount</p>}
+          {errors.amount && <p>Please select a ticket amount 0</p>}
         </div>
 
         {/* ------------------------------------------------------------- */}
@@ -60,10 +68,13 @@ export default function SelectAmount(props) {
             defaultValue="select"
             {...register("area", { required: true })}
           >
-            <option disabled value="select">
-              Select area
-            </option>
             {rest.areas.map((area) => (
+              // <option
+              //   key={area.area}
+              //   value={area.area}
+              //   disabled={area.available === 0}
+              //   {...register("area")}
+              // >
               <option
                 key={area.area}
                 value={area.area}
@@ -72,6 +83,9 @@ export default function SelectAmount(props) {
                 {area.area} / {area.available} spots left
               </option>
             ))}
+            <option disabled value="select">
+              Select area
+            </option>
           </select>
           {errors.area && <p>Please select an area</p>}
         </div>

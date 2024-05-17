@@ -12,7 +12,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} grid grid-cols-1`}>
+      <body className={`${inter.className} grid grid-cols-1 mb-10`}>
         <Header />
         {children}
       </body>

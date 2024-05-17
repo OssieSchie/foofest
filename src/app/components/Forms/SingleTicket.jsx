@@ -13,20 +13,23 @@ export default function SingleTicket() {
   };
 
   return (
-    <div className="border w-30 min-h-30 p-3">
-      <form className="flex flex-col gap-2" onSubmit={handleSubmit(onSubmit)}>
+    <div className="border w-96 min-w-96 min-h-30 p-3">
+      <form
+        className="flex flex-col gap-6 p-3"
+        onSubmit={handleSubmit(onSubmit)}
+      >
         <div className="flex flex-col ">
-          <label>Name of ticket holder</label>
+          <label className="text-balance">Name of ticket holder</label>
           <input
             type="text"
             className="border"
             {...register("name", { required: true, minLength: 1 })}
           />
         </div>
-        <div>
-          <p>Please select a ticket type</p>
+        <div className="text-center border-t">
+          <p className="text-balance">Please select a ticket type</p>
 
-          <div className="flex gap-2">
+          <div className="flex gap-2 justify-center">
             <label className="flex flex-col w-auto h-24 text-center justify-around border border-slate-500 rounded-md p-2">
               Regular Ticket
               <input
@@ -48,21 +51,35 @@ export default function SingleTicket() {
             </label>
           </div>
         </div>
-        <div>
-          <p>
+        <div className="text-center border-t border-b pb-2 flex flex-col gap-2">
+          <p className="text-balance">
             Would you like to ensure Green Camping for an additional fee of 249
             kr.?
           </p>
-          <label className="flex flex-col w-28 h-24 text-center justify-around border border-slate-500 rounded-md">
-            Yes
-            <input
-              {...register("greenCamping", { required: true })}
-              type="radio"
-              value="yes"
-            />
-          </label>
+          <div className="flex justify-center gap-2">
+            <label className="flex flex-col w-28 h-24 text-center justify-around border border-slate-500 rounded-md">
+              Yes
+              <input
+                {...register("greenCamping", { required: true })}
+                type="radio"
+                value="yes"
+              />
+            </label>
+            <label className="flex flex-col w-28 h-24 text-center justify-around border border-slate-500 rounded-md">
+              No
+              <input
+                {...register("greenCamping", { required: true })}
+                type="radio"
+                value="no"
+              />
+            </label>
+          </div>
         </div>
-        <input type="submit" value="next" />
+        <input
+          type="submit"
+          value="next"
+          className="border border-slate-500 hover:cursor-pointer h-20 w-36 mx-auto"
+        />
       </form>
     </div>
   );
