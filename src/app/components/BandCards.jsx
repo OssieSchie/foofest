@@ -9,14 +9,19 @@ import styles from "./BandCards.module.css";
 export default function BandCards(props) {
   const [selectedGenre, setSelectedGenre] = useState(null);
   const [expanded, setExpanded] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
 
   const data = props.data;
   const uniqueGenresArray = [];
 
   //filtrere gennem alle objekter og laver værdien af den genre man kigger på til den current selected genre.
-  const filteredData = selectedGenre
-    ? data.filter((band) => band.genre === selectedGenre)
-    : data;
+  const filteredData = data.filter((band) => {
+    const matchesGenre = selectedGenre ? band.genre === selectedGenre : true;
+    const matchesSearch = band.name
+      .toLowerCase()
+      .includes(searchQuery.toLowerCase());
+    return matchesGenre && matchesSearch;
+  });
 
   const handleGenreClick = (genre) => {
     setSelectedGenre(genre);
@@ -40,9 +45,18 @@ export default function BandCards(props) {
   //   console.log(uniqueGenresArray);
   return (
     <section className="flex flex-col gap-5">
-      <button onClick={expand} className="underline">
-        Choose a genre to view
-      </button>
+      <div className="flex justify-center gap-36">
+        <input
+          type="text"
+          placeholder="Search for a band"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          className="p-2 border border-gray-300 rounded"
+        />
+        <button onClick={expand} className="underline">
+          Choose a genre to view
+        </button>
+      </div>
       <article
         className={`${
           expanded ? styles.open : styles.closed
