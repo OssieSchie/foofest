@@ -1,12 +1,21 @@
-import { getBandsBySlug, getFlatSchedule } from "@/app/lib/api";
-import React from "react";
+import {
+  addFavorited,
+  getAllfavorited,
+  getBandsBySlug,
+  getFlatSchedule,
+} from "@/app/lib/api";
 import Image from "next/image";
+import FavoritedTab from "../components/FavoriteTab";
 
 async function bandPage({ params }) {
   const { slug } = params;
   const data = await getBandsBySlug(slug);
 
   const scheduleData = await getFlatSchedule();
+
+  const favoriteData = await getAllfavorited();
+
+  // console.log(favoriteData);
 
   const filteredData = scheduleData.filter((item) => item.act === data.name);
 
@@ -28,54 +37,64 @@ async function bandPage({ params }) {
   // console.log(scheduleData);
 
   return (
-    <article>
-      <h1>Bands navn: {data.name}</h1>
-      <h3>Genre: {data.genre}</h3>
-      {data.logo.startsWith("http") ? ( // Check if image URL is an external link
-        <Image
-          src={data.logo}
-          width={500}
-          height={500}
-          alt="Logo For the Band"
-          priority={true}
+    <section className="flex gap-10">
+      <article>
+        <h1>Bands navn: {data.name}</h1>
+        <h3>Genre: {data.genre}</h3>
+        {data.logo.startsWith("http") ? ( // Check if image URL is an external link
+          <Image
+            src={data.logo}
+            width={500}
+            height={500}
+            alt="Logo For the Band"
+            priority={true}
+          />
+        ) : (
+          <Image
+            src={`/logos/${data.logo}`}
+            width={500}
+            height={500}
+            alt="Logo For the Band"
+            priority={true}
+          /> // Image stored in public folder
+        )}
+
+        {filteredData.map((item, index) => (
+          <div key={index}>
+            {item.cancelled ? (
+              <>
+                <h2>CANCELLED!!</h2>
+                <p className="line-through">{item.stage}</p>
+                <h3>Time: </h3>
+                <p className="line-through">
+                  {replaceDayAbbreviations(item.day)}
+                </p>
+                <p className="line-through">
+                  {item.start} - {item.end}
+                </p>
+              </>
+            ) : (
+              <>
+                <h3>Playing at:</h3>
+                <p>{item.stage}</p>
+                <h3>Time: </h3>
+                <p>{replaceDayAbbreviations(item.day)}</p>
+                <p>
+                  {item.start} - {item.end}
+                </p>
+              </>
+            )}
+          </div>
+        ))}
+      </article>
+      <article>
+        <FavoritedTab
+          band={filteredData}
+          name={favoriteData}
+          schedule={scheduleData}
         />
-      ) : (
-        <Image
-          src={`/logos/${data.logo}`}
-          width={500}
-          height={500}
-          alt="Logo For the Band"
-          priority={true}
-        /> // Image stored in public folder
-      )}
-      {filteredData.map((item, index) => (
-        <div key={index}>
-          {item.cancelled ? (
-            <>
-              <h2>CANCELLED!!</h2>
-              <p className="line-through">{item.stage}</p>
-              <h3>Time: </h3>
-              <p className="line-through">
-                {replaceDayAbbreviations(item.day)}
-              </p>
-              <p className="line-through">
-                {item.start} - {item.end}
-              </p>
-            </>
-          ) : (
-            <>
-              <h3>Playing at:</h3>
-              <p>{item.stage}</p>
-              <h3>Time: </h3>
-              <p>{replaceDayAbbreviations(item.day)}</p>
-              <p>
-                {item.start} - {item.end}
-              </p>
-            </>
-          )}
-        </div>
-      ))}
-    </article>
+      </article>
+    </section>
   );
 }
 
