@@ -18,11 +18,6 @@ export default function FormWrapper({ areas }) {
       area: "Nilfheim",
       tents: 1,
     },
-    {
-      name: null,
-      ticket: null,
-      greenCamping: null,
-    },
   ];
 
   //array af enkelt billet objekter --- array med mængde af tickets, area tents og andre ting der ændre prisen
@@ -39,7 +34,7 @@ export default function FormWrapper({ areas }) {
         ticketAmount={ticketAmount}
         setTicketAmount={setTicketAmount}
       />
-      <FillTicket ticketAmount={ticketAmount} />
+      <FillTicket ticketAmount={ticketAmount} parentTicket={parentTicket} />
       <BillingInfo />
       {/* <Summary /> */}
     </section>
