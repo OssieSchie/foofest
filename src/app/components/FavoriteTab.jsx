@@ -27,7 +27,16 @@ export default function FavoriteTab({ band, name, schedule }) {
   const [favoriteActs, setFavoriteActs] = useState(name);
   const [isVisible, setIsVisible] = useState(false);
 
+  const fetchFavorites = async () => {
+    const initialFavorites = await getAllfavorited();
+    setFavoriteActs(initialFavorites);
+  };
+
+  // Call fetchFavorites once when the component is loaded
+  fetchFavorites();
+
   const favorited = async (act) => {
+    // add the band to favorites
     await addFavorited(act);
     console.log(`${act} was pushed`);
 
