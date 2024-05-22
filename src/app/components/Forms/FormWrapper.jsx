@@ -19,12 +19,11 @@ export default function FormWrapper({ areas }) {
       tents: 1,
     },
   ];
+  // ^^omskriv så individuelle tickets er nemmere at tilgå
 
-  //array af enkelt billet objekter --- array med mængde af tickets, area tents og andre ting der ændre prisen
+  function finalizePurchase(){
 
-  function parentSubmitHandler() {}
-
-  function parentSubmit() {}
+  }
 
   return (
     <section className="md:max-w-7xl mx-auto">

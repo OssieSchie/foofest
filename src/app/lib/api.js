@@ -38,7 +38,8 @@ export async function reserveSpot(areaInput, amountInput) {
       if (!response.ok) {
         throw new Error("Network response was not ok " + response.statusText);
       }
-      return response.json();
+      let data = response.json();
+      return data;
     })
     .then((data) => console.log(data))
     .catch((err) =>

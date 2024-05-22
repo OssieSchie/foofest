@@ -20,6 +20,7 @@ export default function SelectAmount(props) {
 
   const onSubmit = (data) => {
     reserveSpot(data.area, data.amount);
+    // hvordan tager jeg fat i det returnerede object fra reserveSpot?
     console.log(
       "area: ",
       data.area,
@@ -29,7 +30,6 @@ export default function SelectAmount(props) {
       data.tents
     );
   };
-  // NOT WORKING !!!!  check måske next.config.mjs
 
   function checkTicketAmount(evt) {
     if (evt < 1) {
