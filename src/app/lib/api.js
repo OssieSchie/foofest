@@ -1,4 +1,4 @@
-export const rootUrl = "https://glitch.com/~quilled-awesome-sail";
+export const rootUrl = "http://quilled-awesome-sail.glitch.me/";
 
 export async function getAllBands() {
   const res = await fetch(`${rootUrl}/bands`);
