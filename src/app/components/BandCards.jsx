@@ -35,7 +35,7 @@ export default function BandCards(props) {
     setExpanded((expand) => !expand);
   };
 
-  // kører gennem alle genrene og tilføjer 1 af hver genrer til ny array
+  // kører gennem alle genrene og tilføjer hver genrer til ny array
   data.map((bands) => {
     if (!uniqueGenresArray.includes(bands.genre)) {
       uniqueGenresArray.push(bands.genre);
@@ -51,7 +51,7 @@ export default function BandCards(props) {
           placeholder="Search for a band"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          className="p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-red-500"
+          className="p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-red-500 text-black"
         />
         <button
           onClick={expand}

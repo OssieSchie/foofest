@@ -7,20 +7,45 @@ import { addFavorited, deleteFavorited, getAllfavorited } from "@/app/lib/api";
 const Container = styled.div`
   position: fixed;
   right: ${(props) => (props.isVisible ? "0" : "-100%")};
-  top: 0;
-  width: 300px;
-  height: 100%;
+  top: 1.25rem;
+  width: 18, 75rem;
+  height: 50%;
   background-color: white;
-  transition: right 0.3s ease-in-out;
+  transition: right 0.5s ease-in-out;
   box-shadow: ${(props) =>
     props.isVisible ? "-2px 0 5px rgba(0,0,0,0.3)" : "none"};
+  text-align: center;
+  background-color: #262323;
 `;
 
 const ToggleButton = styled.button`
   position: fixed;
-  top: 20px;
-  right: ${(props) => (props.isVisible ? "320px" : "20px")};
-  transition: right 0.3s ease-in-out;
+  top: 1.25rem;
+  right: ${(props) => (props.isVisible ? "18rem" : "20px")};
+  transition: right 0.5s ease-in-out;
+  padding: 0.5rem 1rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+
+  &:hover {
+    background-color: #0056b3;
+  }
+
+  &:active {
+    background-color: #004085;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
+  }
 `;
 
 export default function FavoriteTab({ band, name, schedule }) {
@@ -61,23 +86,23 @@ export default function FavoriteTab({ band, name, schedule }) {
   };
 
   return (
-    <>
+    <article>
       <ToggleButton isVisible={isVisible} onClick={toggleContainer}>
-        {isVisible ? "Hide Favorites" : "Show Favorites"}
+        {isVisible ? "×" : "Favorites"}
       </ToggleButton>
       <Container isVisible={isVisible}>
         {band.map((band) => (
-          <div key={band.id}>
-            <button onClick={() => favorited(band.act)}>
+          <div key={band.id} className="m-2">
+            <button onClick={() => favorited(band.act)} className="">
               Add {band.act} to favorites
             </button>
           </div>
         ))}
-        <div>
+        <div className="flex flex-col">
           {favoriteActs.map((n) => {
             return (
-              <ul key={n.act}>
-                <li className="border-2 flex gap-2">
+              <ul key={n.id} className="">
+                <li className=" border-b-2 p-2 flex gap-2 items-center justify-center">
                   {n.act}
                   <button
                     className="font-bold text-lg"
@@ -91,6 +116,6 @@ export default function FavoriteTab({ band, name, schedule }) {
           })}
         </div>
       </Container>
-    </>
+    </article>
   );
 }
