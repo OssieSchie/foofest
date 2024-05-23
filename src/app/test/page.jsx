@@ -1,7 +1,7 @@
 export default async function Test() {
-  const data = await fetch("http://localhost:8080/schedule").then((r) =>
-    r.json()
-  );
+  const data = await fetch(
+    "http://quilled-awesome-sail.glitch.me//schedule"
+  ).then((r) => r.json());
   const nextSchedule = [];
   for (let stage in data) {
     for (let day in data[stage]) {
