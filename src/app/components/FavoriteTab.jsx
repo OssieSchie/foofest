@@ -8,7 +8,7 @@ const Container = styled.div`
   position: fixed;
   right: ${(props) => (props.isVisible ? "0" : "-100%")};
   top: 1.25rem;
-  width: 18, 75rem;
+  width: 18.75rem;
   height: 50%;
   background-color: white;
   transition: right 0.5s ease-in-out;
@@ -52,13 +52,15 @@ export default function FavoriteTab({ band, name, schedule }) {
   const [favoriteActs, setFavoriteActs] = useState(name);
   const [isVisible, setIsVisible] = useState(false);
 
-  const fetchFavorites = async () => {
-    const initialFavorites = await getAllfavorited();
-    setFavoriteActs(initialFavorites);
-  };
+  useEffect(() => {
+    const fetchFavorites = async () => {
+      const initialFavorites = await getAllfavorited();
+      setFavoriteActs(initialFavorites);
+    };
 
-  // Call fetchFavorites once when the component is loaded
-  fetchFavorites();
+    // Call fetchFavorites once when the component is mounted
+    fetchFavorites();
+  }, []);
 
   const favorited = async (act) => {
     // add the band to favorites
@@ -102,7 +104,7 @@ export default function FavoriteTab({ band, name, schedule }) {
           {favoriteActs.map((n) => {
             return (
               <ul key={n.id} className="">
-                <li className=" border-b-2 p-2 flex gap-2 items-center justify-center">
+                <li className="border-b-2 p-2 flex gap-2 items-center justify-center">
                   {n.act}
                   <button
                     className="font-bold text-lg"
