@@ -1,4 +1,4 @@
-const rootUrl = "http://localhost:8080";
+export const rootUrl = "http://localhost:8080";
 
 export async function getAllBands() {
   const res = await fetch(`${rootUrl}/bands`);
@@ -23,29 +23,29 @@ export async function getAllAvailableSpots() {
   return await res.json();
 }
 
-export async function reserveSpot(areaInput, amountInput) {
-  fetch("http://localhost:8080/reserve-spot", {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      area: areaInput,
-      amount: amountInput,
-    }),
-  })
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error("Network response was not ok " + response.statusText);
-      }
-      let data = response.json();
-      return data;
-    })
-    .then((data) => console.log(data))
-    .catch((err) =>
-      console.error("There has been a problem with your fetch operation:", err)
-    );
-}
+// export async function reserveSpot(areaInput, amountInput) {
+//   fetch("http://localhost:8080/reserve-spot", {
+//     method: "PUT",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//     body: JSON.stringify({
+//       area: areaInput,
+//       amount: amountInput,
+//     }),
+//   })
+//     .then((response) => {
+//       if (!response.ok) {
+//         throw new Error("Network response was not ok " + response.statusText);
+//       }
+//       let data = response.json();
+//       return data;
+//     })
+//     .then((data) => console.log(data))
+//     .catch((err) =>
+//       console.error("There has been a problem with your fetch operation:", err)
+//     );
+// }
 
 export async function completeReservation(id) {
   let headersList = {

@@ -1,12 +1,15 @@
 "use client";
 import React from "react";
+import { rootUrl } from "@/app/lib/api";
 // import SelectCenter from "./SelectCenter";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { reserveSpot } from "@/app/lib/api";
 
 export default function SelectAmount(props) {
   const { ticketAmount, setTicketAmount, ...rest } = props;
+
+  const [formData, setFormData] = useState(null);
 
   // const [userAmount, setUserAmount] = useState(1);
 
@@ -18,8 +21,26 @@ export default function SelectAmount(props) {
     formState: { errors },
   } = useForm();
 
+  useEffect(() => {
+    function handlePut() {
+      fetch(`${rootUrl}/reserve-spot`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          area: formData.area,
+          amount: formData.amount,
+        }),
+      })
+        .then((response) => console.log(response))
+        .catch((err) => console.error(err));
+    }
+  });
+
   const onSubmit = (data) => {
-    reserveSpot(data.area, data.amount);
+    setFormData(data);
+    handlePut();
     // hvordan tager jeg fat i det returnerede object fra reserveSpot?
     console.log(
       "area: ",
