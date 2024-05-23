@@ -1,4 +1,4 @@
-const rootUrl = "http://localhost:8080";
+const rootUrl = "https://glitch.com/edit/#!/quilled-awesome-sail";
 
 export async function getAllBands() {
   const res = await fetch(`${rootUrl}/bands`);
