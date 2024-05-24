@@ -47,7 +47,7 @@ function Stages({ name, mon, tue, wed, thu, fri, sat, sun }) {
       >
         <div className="grid grid-rows-7 gap-2 px-4">
           <button
-            className="hover:bg-white-off-00 hover:text-dark-grey-00 rounded-md bg-white-off-20 h-8"
+            className="hover:bg-white-off-00 focus:bg-white-off-00 hover:text-dark-grey-00 rounded-md focus:text-dark-grey-00 bg-white-off-20 h-8"
             onClick={() => {
               daySetter(mon);
             }}
@@ -55,7 +55,7 @@ function Stages({ name, mon, tue, wed, thu, fri, sat, sun }) {
             Monday
           </button>
           <button
-            className="hover:bg-white-off-00 hover:text-dark-grey-00 rounded-md bg-white-off-20 h-8"
+            className="hover:bg-white-off-00 focus:bg-white-off-00 hover:text-dark-grey-00 rounded-md focus:text-dark-grey-00 bg-white-off-20 h-8"
             onClick={() => {
               daySetter(tue);
             }}
@@ -63,7 +63,7 @@ function Stages({ name, mon, tue, wed, thu, fri, sat, sun }) {
             Tuesday
           </button>
           <button
-            className="hover:bg-white-off-00 hover:text-dark-grey-00 rounded-md bg-white-off-20 h-8"
+            className="hover:bg-white-off-00 focus:bg-white-off-00 hover:text-dark-grey-00 rounded-md focus:text-dark-grey-00 bg-white-off-20 h-8"
             onClick={() => {
               daySetter(wed);
             }}
@@ -71,7 +71,7 @@ function Stages({ name, mon, tue, wed, thu, fri, sat, sun }) {
             Wednesday
           </button>
           <button
-            className="hover:bg-white-off-00 hover:text-dark-grey-00 rounded-md bg-white-off-20 h-8"
+            className="hover:bg-white-off-00 focus:bg-white-off-00 hover:text-dark-grey-00 rounded-md focus:text-dark-grey-00 bg-white-off-20 h-8"
             onClick={() => {
               daySetter(thu);
             }}
@@ -79,7 +79,7 @@ function Stages({ name, mon, tue, wed, thu, fri, sat, sun }) {
             Thursday
           </button>
           <button
-            className="hover:bg-white-off-00 hover:text-dark-grey-00 rounded-md bg-white-off-20 h-8"
+            className="hover:bg-white-off-00 focus:bg-white-off-00 hover:text-dark-grey-00 rounded-md focus:text-dark-grey-00 bg-white-off-20 h-8"
             onClick={() => {
               daySetter(fri);
             }}
@@ -87,7 +87,7 @@ function Stages({ name, mon, tue, wed, thu, fri, sat, sun }) {
             Friday
           </button>
           <button
-            className="hover:bg-white-off-00 hover:text-dark-grey-00 rounded-md bg-white-off-20 h-8"
+            className="hover:bg-white-off-00 focus:bg-white-off-00 hover:text-dark-grey-00 rounded-md focus:text-dark-grey-00 bg-white-off-20 h-8"
             onClick={() => {
               daySetter(sat);
             }}
@@ -95,7 +95,7 @@ function Stages({ name, mon, tue, wed, thu, fri, sat, sun }) {
             Saturday
           </button>
           <button
-            className="hover:bg-white-off-00 hover:text-dark-grey-00 rounded-md bg-white-off-20 h-8"
+            className="hover:bg-white-off-00 focus:bg-white-off-00 hover:text-dark-grey-00 rounded-md focus:text-dark-grey-00 bg-white-off-20 h-8"
             onClick={() => {
               daySetter(sun);
             }}
