@@ -51,11 +51,11 @@ export default function BandCards(props) {
           placeholder="Search for a band"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          className="p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-red-500 text-black"
+          className="p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-accent-00 text-black"
         />
         <button
           onClick={expand}
-          className="bg-red-600 text-white border-2 border-red-600 hover:bg-red-700 hover:border-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 rounded-lg py-2 px-4 transition-colors duration-300"
+          className="bg-accent-00 text-white-off-00 hover:bg-red-700 hover:border-red-700 focus:outline-none focus:ring-2 rounded-lg py-2 px-4 transition-colors duration-300"
         >
           Choose a genre to view
         </button>
@@ -70,14 +70,14 @@ export default function BandCards(props) {
           <button
             key={index}
             onClick={() => handleGenreClick(g)}
-            className="bg-gray-800 text-white border-2 border-gray-800 hover:bg-gray-700 hover:border-gray-700 focus:outline-none focus:ring-2 focus:ring-red-500 rounded-lg py-2 px-4 transition-colors duration-300"
+            className="bg-gray-800 text-white border-2 border-gray-800 hover:bg-gray-700 hover:border-gray-700 focus:outline-none focus:ring-2 focus:ring-accent-00 rounded-lg py-2 px-4 transition-colors duration-300"
           >
             {g}
           </button>
         ))}
         <button
           onClick={handleShowAll}
-          className="bg-red-600 text-white border-2 border-red-600 hover:bg-red-700 hover:border-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 rounded-lg py-2 px-4 transition-colors duration-300"
+          className="bg-accent-00 text-white border-2 border-accent-00 hover:bg-red-700 hover:border-red-700 focus:outline-none focus:ring-2 focus:ring-red-700 rounded-lg py-2 px-4 transition-colors duration-300"
         >
           Show All
         </button>

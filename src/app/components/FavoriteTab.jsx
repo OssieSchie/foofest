@@ -15,16 +15,16 @@ const Container = styled.div`
   box-shadow: ${(props) =>
     props.isVisible ? "-2px 0 5px rgba(0,0,0,0.3)" : "none"};
   text-align: center;
-  background-color: #262323;
+  background-color: rgba(38, 35, 35, 0.5);
 `;
 
 const ToggleButton = styled.button`
   position: fixed;
   top: 1.25rem;
-  right: ${(props) => (props.isVisible ? "18rem" : "20px")};
+  right: ${(props) => (props.isVisible ? "19rem" : "20px")};
   transition: right 0.5s ease-in-out;
   padding: 0.5rem 1rem;
-  background-color: #007bff;
+  background-color: #bf6d32;
   color: white;
   border: none;
   border-radius: 0.25rem;
@@ -34,17 +34,17 @@ const ToggleButton = styled.button`
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 
   &:hover {
-    background-color: #0056b3;
+    background-color: #975627;
   }
 
   &:active {
-    background-color: #004085;
+    background-color: #975627;
     box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.2);
   }
 
   &:focus {
     outline: none;
-    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
+    box-shadow: 0 0 0 3px #975627;
   }
 `;
 
