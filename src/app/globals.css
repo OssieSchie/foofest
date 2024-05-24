@@ -19,29 +19,29 @@
 }
 
 h1 {
-  font-family: var(--font-libre);
+  font-family: var(--font-rock-salt);
   font-size: var(--step-3);
   font-weight: bold;
 }
 h2 {
-  font-family: var(--font-libre);
+  font-family: var(--font-rock-salt);
   font-weight: bold;
   font-size: var(--step-2);
 }
 h3 {
-  font-family: var(--font-poppins);
+  font-family: var(--font-rock-salt);
   font-size: var(--step-2);
 }
 h4 {
-  font-family: var(--font-poppins);
+  font-family: var(--font-rock-salt);
   font-size: var(--step-0);
   opacity: 0.7;
 }
 p {
-  font-family: var(--font-poppins);
+  font-family: var(--font-rock-salt);
   font-size: var(--step-0);
 }
 a {
-  font-family: var(--font-poppins);
+  font-family: var(--font-rock-salt);
   font-size: var(--step-0);
 }
