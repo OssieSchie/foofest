@@ -7,6 +7,11 @@ import {
 import Image from "next/image";
 import FavoritedTab from "../components/FavoriteTab";
 
+export const metadata = {
+  title: "Foo Fest",
+  description: "Foo Fest, experience the best music of alle ages!",
+};
+
 async function bandPage({ params }) {
   const { slug } = params;
   const data = await getBandsBySlug(slug);
@@ -14,6 +19,11 @@ async function bandPage({ params }) {
   const scheduleData = await getFlatSchedule();
 
   const favoriteData = await getAllfavorited();
+
+  metadata.title = data ? data.name : "Foo Fest Band";
+  metadata.description = data
+    ? data.name
+    : "Foo Fest, experience the best music of alle ages!";
 
   // console.log(favoriteData);
 
@@ -35,7 +45,7 @@ async function bandPage({ params }) {
 
   // console.log(filteredData);
   // console.log(scheduleData);
-  // console.log(data.members);
+  // console.log(data.name);
 
   return (
     <main className="mx-5 md:mx-52 my-5">
