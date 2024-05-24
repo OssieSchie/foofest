@@ -5,7 +5,8 @@
 :root {
   /* Colors */
   --colors-dark-grey-00: #262323;
-  --colors-white-off-00: #f4f3f3;
+  --colors-white-off-00: #f5ecec;
+  --colors-accent-00: #c18258;
 
   /* Font sizes */
   --step--1: clamp(0.8rem, 0.7809rem + 0.0813vi, 0.844rem);
