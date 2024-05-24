@@ -66,6 +66,12 @@ export default function BandCards(props) {
           expanded ? styles.open : styles.closed
         } grid sm:grid-cols-1 md:grid-cols-3 gap-2 md:mx-24 mx-1`}
       >
+        <button
+          onClick={handleShowAll}
+          className="md:col-span-full bg-red-600 text-white border-2 border-red-600 hover:bg-red-700 hover:border-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 rounded-lg py-2 px-4 transition-colors duration-300"
+        >
+          Show All
+        </button>
         {uniqueGenresArray.map((g, index) => (
           <button
             key={index}
@@ -75,12 +81,6 @@ export default function BandCards(props) {
             {g}
           </button>
         ))}
-        <button
-          onClick={handleShowAll}
-          className="bg-red-600 text-white border-2 border-red-600 hover:bg-red-700 hover:border-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 rounded-lg py-2 px-4 transition-colors duration-300"
-        >
-          Show All
-        </button>
       </article>
 
       {filteredData.length === 0 && (
