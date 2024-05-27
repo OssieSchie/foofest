@@ -57,3 +57,21 @@ export async function completeReservation(ticketID) {
   let data = await res.json();
   return data;
 }
+
+// export async function postParentTicket(data){
+
+//   let bodyContent = JSON.stringify({
+//     ticketID: data.ticketID,
+//     amount: data.ticketAmount,
+//     area: data.area,
+//     tents: data.tents,
+//     groupedTickets: data.groupedTickets,
+//   });
+
+//   let headersList = {
+//     "Content-Type": "application/json",
+//   };
+
+//   let res = await
+
+// }
