@@ -41,7 +41,7 @@ export default function BillingInfo() {
                 name="number"
                 className="shadow-inner p-1"
                 placeholder="Card Number"
-                pattern="[\d| ]{16,22}"
+                pattern="[\d ]{16,22}"
                 maxLength={16}
                 minLength={16}
                 required

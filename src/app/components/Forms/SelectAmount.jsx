@@ -18,8 +18,10 @@ export default function SelectAmount(props) {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
-    reserveSpot(data.area, data.amount);
+  const onSubmit = async (data) => {
+    const response = await reserveSpot(data.area, data.amount);
+    console.log(response.id);
+
     // hvordan tager jeg fat i det returnerede object fra reserveSpot?
     console.log(
       "area: ",

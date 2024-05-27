@@ -24,7 +24,7 @@ export async function getAllAvailableSpots() {
 }
 
 export async function reserveSpot(areaInput, amountInput) {
-  fetch("http://localhost:8080/reserve-spot", {
+  const res = await fetch("http://localhost:8080/reserve-spot", {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -33,18 +33,10 @@ export async function reserveSpot(areaInput, amountInput) {
       area: areaInput,
       amount: amountInput,
     }),
-  })
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error("Network response was not ok " + response.statusText);
-      }
-      let data = response.json();
-      return data;
-    })
-    .then((data) => console.log(data))
-    .catch((err) =>
-      console.error("There has been a problem with your fetch operation:", err)
-    );
+  });
+
+  let data = await res.json();
+  return data;
 }
 
 export async function completeReservation(id) {
