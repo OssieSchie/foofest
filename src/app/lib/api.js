@@ -39,23 +39,21 @@ export async function reserveSpot(areaInput, amountInput) {
   return data;
 }
 
-export async function completeReservation(id) {
+export async function completeReservation(ticketID) {
+  let bodyContent = JSON.stringify({
+    id: ticketID,
+  });
+
   let headersList = {
-    Accept: "*/*",
-    "User-Agent": "Thunder Client (https://www.thunderclient.com)",
     "Content-Type": "application/json",
   };
 
-  let bodyContent = JSON.stringify({
-    id: id,
-  });
-
-  let response = await fetch(`${rootUrl}/fullfill-reservation`, {
+  let res = await fetch(`${rootUrl}/fullfill-reservation`, {
     method: "POST",
     body: bodyContent,
     headers: headersList,
   });
 
-  let data = await response.json();
+  let data = await res.json();
   return data;
 }

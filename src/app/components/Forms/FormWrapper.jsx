@@ -7,32 +7,42 @@ import SelectAmount from "./SelectAmount";
 // import Timer from "../components/Forms/Timer";
 import FillTicket from "./FillTicket";
 import BillingInfo from "./BillingInfo";
+import { completeReservation } from "@/app/lib/api";
 // import Summary from "../components/Forms/Summary";
 
 export default function FormWrapper({ areas }) {
-  const [ticketAmount, setTicketAmount] = useState(1);
   const [ticketID, setTicketID] = useState(null);
+  const [ticketAmount, setTicketAmount] = useState(1);
+  const [area, setArea] = useState("");
+  const [tents, setTents] = useState(0);
 
-  let parentTicket = [
-    {
-      amount: 1,
-      area: "Nilfheim",
-      tents: 1,
-    },
-  ];
+  let parentTicket = {
+    ticketID: ticketID,
+    amount: ticketAmount,
+    area: area,
+    tents: tents,
+    groupedTickets: [],
+  };
   // ^^omskriv så individuelle tickets er nemmere at tilgå
 
-  function finalizePurchase() {}
+  function finalizePurchase() {
+    completeReservation(ticketID);
+    console.log(`completed reservation for ${ticketID}`);
+  }
 
   return (
     <section className="md:max-w-7xl mx-auto">
-      <p>Number of tickets: {ticketAmount}</p>
       <p>id = {ticketID}</p>
+      <p>Number of tickets: {ticketAmount}</p>
+      <p>{area}</p>
+      <p>tents = {tents}</p>
       <SelectAmount
         areas={areas}
         ticketAmount={ticketAmount}
         setTicketAmount={setTicketAmount}
         setTicketID={setTicketID}
+        setArea={setArea}
+        setTents={setTents}
       />
       <FillTicket ticketAmount={ticketAmount} parentTicket={parentTicket} />
       <BillingInfo finalizePurchase={finalizePurchase} />

@@ -6,7 +6,14 @@ import { useForm } from "react-hook-form";
 import { reserveSpot } from "@/app/lib/api";
 
 export default function SelectAmount(props) {
-  const { ticketAmount, setTicketAmount, setTicketID, ...rest } = props;
+  const {
+    ticketAmount,
+    setTicketAmount,
+    setTicketID,
+    setArea,
+    setTents,
+    ...rest
+  } = props;
 
   // const [userAmount, setUserAmount] = useState(1);
 
@@ -20,7 +27,10 @@ export default function SelectAmount(props) {
 
   const onSubmit = async (data) => {
     const response = await reserveSpot(data.area, data.amount);
+    console.log(response);
     setTicketID(response.id);
+    setArea(data.area);
+    setTents(data.tents);
 
     // hvordan tager jeg fat i det returnerede object fra reserveSpot?
     console.log(
