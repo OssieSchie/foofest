@@ -10,6 +10,7 @@ export default function BandCards(props) {
   const [selectedGenre, setSelectedGenre] = useState(null);
   const [expanded, setExpanded] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const [visibleBands, setVisibleBands] = useState(12);
 
   const data = props.data;
   const uniqueGenresArray = [];
@@ -25,10 +26,16 @@ export default function BandCards(props) {
 
   const handleGenreClick = (genre) => {
     setSelectedGenre(genre);
+    setVisibleBands(12); // Reset the number of visible bands when a new genre is selected
   };
 
   const handleShowAll = () => {
     setSelectedGenre(null);
+    setVisibleBands(12); // Reset the number of visible bands when showing all bands
+  };
+
+  const loadMoreBands = () => {
+    setVisibleBands((prevVisibleBands) => prevVisibleBands + 10);
   };
 
   const expand = () => {
@@ -90,7 +97,7 @@ export default function BandCards(props) {
       )}
 
       <article className="grid sm:grid-cols-1 md:grid-cols-4 gap-2 md:mx-24 mx-1">
-        {filteredData.map((bands) => (
+        {filteredData.slice(0, visibleBands).map((bands) => (
           <div
             key={bands.slug}
             className="relative transition-transform duration-300 ease-in-out transform hover:scale-95"
@@ -115,6 +122,17 @@ export default function BandCards(props) {
           </div>
         ))}
       </article>
+
+      {filteredData.length > visibleBands && (
+        <div className="flex justify-center mt-4">
+          <button
+            onClick={loadMoreBands}
+            className="bg-accent-00 text-white border-2 border-accent-00 hover:bg-red-700 hover:border-red-700 focus:outline-none focus:ring-2 focus:ring-red-700 rounded-lg py-2 px-4 transition-colors duration-300"
+          >
+            Load More
+          </button>
+        </div>
+      )}
     </section>
   );
 }

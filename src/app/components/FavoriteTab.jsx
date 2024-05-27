@@ -7,7 +7,7 @@ import { addFavorited, deleteFavorited, getAllfavorited } from "@/app/lib/api";
 const Container = styled.div`
   position: fixed;
   right: ${(props) => (props.isVisible ? "0" : "-100%")};
-  top: 1.25rem;
+  top: 5rem;
   width: 18.75rem;
   height: 50%;
   background-color: white;
@@ -20,7 +20,7 @@ const Container = styled.div`
 
 const ToggleButton = styled.button`
   position: fixed;
-  top: 1.25rem;
+  top: 5rem;
   right: ${(props) => (props.isVisible ? "19rem" : "20px")};
   transition: right 0.5s ease-in-out;
   padding: 0.5rem 1rem;

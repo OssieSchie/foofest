@@ -1,0 +1,32 @@
+.show {
+  display: flex;
+  animation: slideIn 0.7s forwards;
+}
+
+.hidden {
+  width: 0;
+  overflow: clip;
+  animation: slideOut 0.7s forwards;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOut {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
