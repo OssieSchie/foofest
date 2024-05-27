@@ -59,10 +59,6 @@ export async function reserveSpot(areaInput, amountInput) {
   return data;
 }
 
-export async function addToFavorite() {}
-
-export async function addToFavorite() {}
-
 export async function completeReservation(ticketID) {
   let bodyContent = JSON.stringify({
     id: ticketID,
