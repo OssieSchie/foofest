@@ -6,7 +6,7 @@ import Header from "./components/Header";
 
 export const metadata = {
   title: "Foo Fest",
-  description: "Foo Fest, have a blast!",
+  description: "Foo Fest, experience the best music of alle ages!",
 };
 
 export default function RootLayout({ children }) {

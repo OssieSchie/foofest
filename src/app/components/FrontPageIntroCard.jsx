@@ -14,17 +14,17 @@ export default function FrontPageIntroCard() {
           priority
         />
 
-        <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white bg-black bg-opacity-50 p-4">
+        <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white-off-00 bg-black bg-opacity-50 p-4">
           <h1
             className={`${rock_salt.className} text-2xl sm:text-3xl md:text-4xl font-bold mb-4`}
           >
             Welcome to FooFest!
           </h1>
           <div className="flex space-x-4">
-            <button className="bg-red-600 text-white border-2 border-red-600 rounded-lg py-2 px-4 hover:bg-red-700 hover:border-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 transition-colors duration-300">
+            <button className="bg-accent-00 text-white-off-00  rounded-lg py-2 px-4 hover:bg-red-700 hover:border-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 transition-colors duration-300">
               Buy Tickets
             </button>
-            <button className="bg-red-600 text-white border-2 border-red-600 rounded-lg py-2 px-4 hover:bg-red-700 hover:border-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 transition-colors duration-300">
+            <button className="bg-accent-00 text-white-off-00  rounded-lg py-2 px-4 hover:bg-red-700 hover:border-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 transition-colors duration-300">
               Schedule
             </button>
           </div>

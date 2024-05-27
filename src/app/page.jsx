@@ -2,6 +2,7 @@ import Image from "next/image";
 import { completeReservation, getAllBands, reserveSpot } from "@/app/lib/api";
 import BandCards from "./components/BandCards";
 import FrontPageIntroCard from "./components/FrontPageIntroCard";
+import Footer from "./components/Footer";
 
 export default async function Home() {
   // const data = await getAllBands();
@@ -19,6 +20,7 @@ export default async function Home() {
     <main className="mx-5 md:mx-20 contents max-h-svh overflow-scroll">
       <FrontPageIntroCard></FrontPageIntroCard>
       <BandCards data={data}></BandCards>
+      <Footer />
     </main>
   );
 }
