@@ -1,17 +1,22 @@
-"use client";
 import React from "react";
-import Progression from "../components/Forms/Progression";
+import { getAllAvailableSpots } from "../lib/api";
+// import Progression from "../components/Forms/Progression";
 import SelectAmount from "../components/Forms/SelectAmount";
-import Timer from "../components/Forms/Timer";
-import FillTicket from "../components/Forms/FillTicket";
-import BillingInfo from "../components/Forms/BillingInfo";
-import Summary from "../components/Forms/Summary";
+import FormWrapper from "../components/Forms/FormWrapper";
+// import Timer from "../components/Forms/Timer";
+// import FillTicket from "../components/Forms/FillTicket";
+// import BillingInfo from "../components/Forms/BillingInfo";
+// import Summary from "../components/Forms/Summary";
 
-export default function page() {
+export default async function page() {
+  const data = await getAllAvailableSpots();
+
+  // console.log(data);
   return (
     <main>
-      <section>
-        <SelectAmount />
+      <section className="md:max-w-7xl mx-auto">
+        <FormWrapper areas={data} />
+        {/* <SelectAmount areas={data} /> */}
         {/* <FillTicket />
         <BillingInfo />
         <Summary /> */}

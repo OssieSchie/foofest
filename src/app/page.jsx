@@ -17,7 +17,7 @@ export default async function Home() {
   const data = await getAllBands();
 
   return (
-    <main className="mx-5 md:mx-20 contents">
+    <main className="mx-5 md:mx-20 contents max-h-svh overflow-scroll">
       <FrontPageIntroCard></FrontPageIntroCard>
       <BandCards data={data}></BandCards>
       <Footer />

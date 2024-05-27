@@ -1,0 +1,10 @@
+.closed {
+  height: 0;
+  overflow: clip;
+  transition: 0.2s;
+}
+
+.open {
+  padding: 1.5rem 0 1.5rem 0;
+  transition: 0.2s;
+}

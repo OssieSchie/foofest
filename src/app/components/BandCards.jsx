@@ -51,7 +51,7 @@ export default function BandCards(props) {
 
   //   console.log(uniqueGenresArray);
   return (
-    <section className="flex flex-col gap-5">
+    <section className="flex flex-col gap-5 mb-20">
       <div className="flex flex-col items-center sm:flex-row sm:justify-center gap-4 sm:gap-8 md:gap-12 lg:gap-16">
         <input
           type="text"
@@ -73,6 +73,12 @@ export default function BandCards(props) {
           expanded ? styles.open : styles.closed
         } grid sm:grid-cols-1 md:grid-cols-3 gap-2 md:mx-24 mx-1`}
       >
+        <button
+          onClick={handleShowAll}
+          className="md:col-span-full bg-red-600 text-white border-2 border-red-600 hover:bg-red-700 hover:border-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 rounded-lg py-2 px-4 transition-colors duration-300"
+        >
+          Show All
+        </button>
         {uniqueGenresArray.map((g, index) => (
           <button
             key={index}
@@ -100,12 +106,12 @@ export default function BandCards(props) {
         {filteredData.slice(0, visibleBands).map((bands) => (
           <div
             key={bands.slug}
-            className="relative transition-transform duration-300 ease-in-out transform hover:scale-95"
+            className="relative transition-transform duration-100 ease-in transform hover:scale-95 rounded-md overflow-clip bg-dark-grey-00"
           >
             <Link href={`/${bands.slug}`} prefetch={false}>
-              <h4 className="absolute bottom-0 left-0 w-full bg-black bg-opacity-25 text-white text-center p-2">
-                {bands.name}
-              </h4>
+              <div className="absolute bottom-0 left-0 w-full bg-dark-grey-50 text-center p-2">
+                <h4 className="text-white-off-00">{bands.name}</h4>
+              </div>
               <Image
                 src={
                   bands.logo.includes("http")
