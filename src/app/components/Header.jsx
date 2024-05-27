@@ -1,15 +1,16 @@
-import React from 'react'
-import Link from 'next/link'
+import React from "react";
+import Link from "next/link";
 
 function Header() {
   return (
-        <nav>
-            {/* <a href="/" > Forside </a>
+    <nav className="flex flex-row gap-6">
+      {/* <a href="/" > Forside </a>
             <a href="/stages" > Schedule </a> */}
-            <Link href="/" > Forside </Link>
-            <Link href="/stages" > Schedule </Link>
-        </nav>
-  )
+      <Link href="/"> Forside </Link>
+      <Link href="/stages"> Schedule </Link>
+      <Link href="/bookingPage"> Buy a ticket </Link>
+    </nav>
+  );
 }
 
-export default Header
+export default Header;
