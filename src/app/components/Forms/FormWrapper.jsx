@@ -7,7 +7,7 @@ import SelectAmount from "./SelectAmount";
 // import Timer from "../components/Forms/Timer";
 import FillTicket from "./FillTicket";
 import BillingInfo from "./BillingInfo";
-import { completeReservation } from "@/app/lib/api";
+import { completeReservation, postParentTicket } from "@/app/lib/api";
 // import Summary from "../components/Forms/Summary";
 
 export default function FormWrapper({ areas }) {
@@ -28,6 +28,9 @@ export default function FormWrapper({ areas }) {
   function finalizePurchase() {
     completeReservation(ticketID);
     console.log(`completed reservation for ${ticketID}`);
+    const parent = postParentTicket(parentTicket);
+    console.log(`posted parent to Supabase:
+    ${parent}`);
   }
 
   return (

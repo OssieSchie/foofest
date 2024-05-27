@@ -58,20 +58,25 @@ export async function completeReservation(ticketID) {
   return data;
 }
 
-// export async function postParentTicket(data){
+export async function postParentTicket(ticket) {
+  let headersList = {
+    Accept: "application/json",
+    apikey:
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFrenBramR0bWx2YWRsZ3NucGdoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTU1ODY3OTAsImV4cCI6MjAzMTE2Mjc5MH0.4efvismuf-ayRWpkWH1Om9hbwcUMephpIAwFv_pSuzY",
+    "Content-Type": "application/json",
+  };
 
-//   let bodyContent = JSON.stringify({
-//     ticketID: data.ticketID,
-//     amount: data.ticketAmount,
-//     area: data.area,
-//     tents: data.tents,
-//     groupedTickets: data.groupedTickets,
-//   });
+  let bodyContent = JSON.stringify({ ticket: { ticket } });
 
-//   let headersList = {
-//     "Content-Type": "application/json",
-//   };
+  let response = await fetch(
+    "https://qkzpkjdtmlvadlgsnpgh.supabase.co/rest/v1/tickets2",
+    {
+      method: "POST",
+      body: bodyContent,
+      headers: headersList,
+    }
+  );
 
-//   let res = await
-
-// }
+  let data = await response.text();
+  console.log(data);
+}
