@@ -11,12 +11,6 @@ export default function FillTicket({ ticketAmount, parentTicket }) {
   function fillTicket(newTicket) {
     ticketArray.push(newTicket);
     console.log(ticketArray);
-
-    // if(isFinal){
-    //   parentTicket.push(ticketArray);
-    //   setIsFinal(false);
-    //   console.log("pushed ticketArray to parentTicket: ", parentTicket );
-    // }
   }
 
   function pushToParentTicket() {
