@@ -11,6 +11,7 @@ import BillingInfo from "./BillingInfo";
 
 export default function FormWrapper({ areas }) {
   const [ticketAmount, setTicketAmount] = useState(1);
+  const [ticketID, setTicketID] = useState(null);
 
   let parentTicket = [
     {
@@ -21,20 +22,20 @@ export default function FormWrapper({ areas }) {
   ];
   // ^^omskriv så individuelle tickets er nemmere at tilgå
 
-  function finalizePurchase(){
-
-  }
+  function finalizePurchase() {}
 
   return (
     <section className="md:max-w-7xl mx-auto">
       <p>Number of tickets: {ticketAmount}</p>
+      <p>id = {ticketID}</p>
       <SelectAmount
         areas={areas}
         ticketAmount={ticketAmount}
         setTicketAmount={setTicketAmount}
+        setTicketID={setTicketID}
       />
       <FillTicket ticketAmount={ticketAmount} parentTicket={parentTicket} />
-      <BillingInfo />
+      <BillingInfo finalizePurchase={finalizePurchase} />
       {/* <Summary /> */}
     </section>
   );

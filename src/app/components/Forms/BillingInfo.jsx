@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import ReactCreditCards from "react-credit-cards-2";
 import "react-credit-cards-2/dist/es/styles-compiled.css";
 
-export default function BillingInfo() {
+export default function BillingInfo({ finalizePurchase }) {
   const [state, setState] = useState({
     number: "",
     expiry: "",
@@ -105,7 +105,12 @@ export default function BillingInfo() {
           />
         </div>
       </div>
-      <button className="border border-slate-500 hover:cursor-pointer h-auto w-36 mx-auto p-2">
+      <button
+        className="border border-slate-500 hover:cursor-pointer h-auto w-36 mx-auto p-2"
+        onClick={() => {
+          finalizePurchase();
+        }}
+      >
         Finalize purchase
       </button>
     </div>
