@@ -9,7 +9,7 @@ export default function Summary({
 }) {
   let totalRegular = ticketAmount - totalVip;
   return (
-    <div className="h-14 md:h-[570px] sticky top-16 right-0">
+    <div className="h-14 md:h-[570px] sticky top-16 right-0 md:ml-4">
       <div className="hidden md:flex md:flex-col">
         <h3 className="bg-white-off-00 text-dark-grey-00 px-4 py-2 inline">
           Total summary:
@@ -53,7 +53,7 @@ export default function Summary({
           )}
         </ul>
       </div>
-      <div className="mt-4 flex md:flex-col fixed sm:sticky md:top-16 right-0 z-50 bg-dark-grey-00 md:bg-transparent">
+      <div className="mt-4 flex md:flex-col fixed sm:sticky top-12 md:top-16 right-0 z-50 bg-dark-grey-00 md:bg-transparent">
         <h3 className="bg-white-off-00 text-dark-grey-00 px-4 py-2 inline">
           Total cost:
         </h3>

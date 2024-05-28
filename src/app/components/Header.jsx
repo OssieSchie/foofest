@@ -15,7 +15,7 @@ function Header() {
   }
 
   return (
-    <nav className="sticky top-0 left-0 w-full h-16 flex items-center justify-between px-4 bg-dark-grey-00 bg-opacity-70 backdrop-blur-md text-white z-10">
+    <nav className="sticky top-0 left-0 w-full h-16 flex items-center justify-between px-4 bg-dark-grey-00 bg-opacity-70 backdrop-blur-md text-white z-10 ">
       <div
         className={`${
           expanded ? styles.show : styles.hidden

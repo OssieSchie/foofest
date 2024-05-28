@@ -62,7 +62,7 @@ export default function SingleTicket({
           <label className="text-balance">Name of ticket holder</label>
           <input
             type="text"
-            className="border"
+            className="border text-dark-grey-00"
             {...register("name", { required: true, minLength: 1 })}
           />
         </div>
@@ -70,7 +70,7 @@ export default function SingleTicket({
           <p className="text-balance">Please select a ticket type</p>
 
           <div className="flex gap-2 justify-center">
-            <label className="flex flex-col w-auto h-24 text-center justify-around border border-slate-500 rounded-md p-2">
+            <label className="flex flex-col w-auto h-24 text-center justify-around border border-white-off-00 rounded-md p-2">
               Regular Ticket
               <input
                 {...register("ticket", { required: true })}
@@ -80,7 +80,7 @@ export default function SingleTicket({
               <p>799 kr.</p>
             </label>
 
-            <label className="flex flex-col w-28 h-24 text-center justify-around border border-slate-500 rounded-md">
+            <label className="flex flex-col w-28 h-24 text-center justify-around border border-white-off-00 rounded-md">
               VIP Ticket
               <input
                 {...register("ticket", { required: true })}
@@ -97,7 +97,7 @@ export default function SingleTicket({
             kr.?
           </p>
           <div className="flex justify-center gap-2">
-            <label className="flex flex-col w-28 h-24 text-center justify-around border border-slate-500 rounded-md">
+            <label className="flex flex-col w-28 h-24 text-center justify-around border border-white-off-00 rounded-md">
               Yes
               <input
                 {...register("greenCamping", { required: true })}
@@ -105,7 +105,7 @@ export default function SingleTicket({
                 value={true}
               />
             </label>
-            <label className="flex flex-col w-28 h-24 text-center justify-around border border-slate-500 rounded-md">
+            <label className="flex flex-col w-28 h-24 text-center justify-around border border-white-off-00 rounded-md">
               No
               <input
                 {...register("greenCamping", { required: true })}
@@ -119,14 +119,14 @@ export default function SingleTicket({
           <input
             type="submit"
             value="next ticket"
-            className="border border-slate-500 hover:cursor-pointer h-20 w-36 mx-auto"
+            className="border border-white-off-00 hover:cursor-pointer h-20 w-36 mx-auto"
           />
         )}
         {isLast && (
           <input
             type="submit"
             value="Next"
-            className="border border-slate-500 hover:cursor-pointer h-20 w-36 mx-auto"
+            className="border border-white-off-00 hover:cursor-pointer h-20 w-36 mx-auto"
           />
         )}
       </form>
