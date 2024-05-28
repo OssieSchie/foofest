@@ -8,7 +8,7 @@ import SelectAmount from "./SelectAmount";
 import FillTicket from "./FillTicket";
 import BillingInfo from "./BillingInfo";
 import { completeReservation, postParentTicket } from "@/app/lib/api";
-// import Summary from "../components/Forms/Summary";
+import Summary from "./Summary";
 
 export default function FormWrapper({ areas }) {
   const [ticketID, setTicketID] = useState(null);
@@ -25,6 +25,9 @@ export default function FormWrapper({ areas }) {
   };
   // ^^omskriv så individuelle tickets er nemmere at tilgå
 
+  const [totalVip, setTotalVip] = useState(0);
+  const [totalGreen, setTotalGreen] = useState(0);
+
   function finalizePurchase() {
     completeReservation(ticketID);
     console.log(`completed reservation for ${ticketID}`);
@@ -34,12 +37,15 @@ export default function FormWrapper({ areas }) {
   }
 
   return (
-    <section className="md:max-w-7xl mx-auto max-h-svh overflow-scroll">
-      <p>id = {ticketID}</p>
-      <p>Number of tickets: {ticketAmount}</p>
-      <p>{area}</p>
-      <p>tents = {tents}</p>
-      <section>
+    <section className="flex flex-col mx-5 md:grid md:grid-cols-5">
+      {/* <div>
+        <p>id = {ticketID}</p>
+        <p>Number of tickets: {ticketAmount}</p>
+        <p>{area}</p>
+        <p>tents = {tents}</p>
+      </div> */}
+
+      <section className="md:col-start-2 md:col-span-3 order-last md:order-first">
         <SelectAmount
           areas={areas}
           ticketAmount={ticketAmount}
@@ -48,11 +54,25 @@ export default function FormWrapper({ areas }) {
           setArea={setArea}
           setTents={setTents}
         />
-        <FillTicket ticketAmount={ticketAmount} parentTicket={parentTicket} />
+        <FillTicket
+          ticketAmount={ticketAmount}
+          parentTicket={parentTicket}
+          setTotalGreen={setTotalGreen}
+          totalGreen={totalGreen}
+          setTotalVip={setTotalVip}
+          totalVip={totalVip}
+        />
         <BillingInfo finalizePurchase={finalizePurchase} />
-        {/* <Summary /> */}
       </section>
-      <div></div>
+      <div>
+        <Summary
+          ticketID={ticketID}
+          ticketAmount={ticketAmount}
+          tents={tents}
+          totalGreen={totalGreen}
+          totalVip={totalVip}
+        />
+      </div>
     </section>
   );
 }
