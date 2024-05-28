@@ -1,5 +1,5 @@
 "use client";
-
+import styles from "./FormWrapper.module.css";
 import React from "react";
 import { useState } from "react";
 // import Progression from "../components/Forms/Progression";
@@ -34,22 +34,25 @@ export default function FormWrapper({ areas }) {
   }
 
   return (
-    <section className="md:max-w-7xl mx-auto">
+    <section className="md:max-w-7xl mx-auto max-h-svh overflow-scroll">
       <p>id = {ticketID}</p>
       <p>Number of tickets: {ticketAmount}</p>
       <p>{area}</p>
       <p>tents = {tents}</p>
-      <SelectAmount
-        areas={areas}
-        ticketAmount={ticketAmount}
-        setTicketAmount={setTicketAmount}
-        setTicketID={setTicketID}
-        setArea={setArea}
-        setTents={setTents}
-      />
-      <FillTicket ticketAmount={ticketAmount} parentTicket={parentTicket} />
-      <BillingInfo finalizePurchase={finalizePurchase} />
-      {/* <Summary /> */}
+      <section>
+        <SelectAmount
+          areas={areas}
+          ticketAmount={ticketAmount}
+          setTicketAmount={setTicketAmount}
+          setTicketID={setTicketID}
+          setArea={setArea}
+          setTents={setTents}
+        />
+        <FillTicket ticketAmount={ticketAmount} parentTicket={parentTicket} />
+        <BillingInfo finalizePurchase={finalizePurchase} />
+        {/* <Summary /> */}
+      </section>
+      <div></div>
     </section>
   );
 }
