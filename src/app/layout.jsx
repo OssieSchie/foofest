@@ -13,7 +13,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={` ${roboto.className} grid grid-cols-1 bg-dark-grey-00 text-white-off-00 `}
+        className={` ${roboto.className} grid grid-cols-1 bg-lighter-grey-00 text-white-off-00`}
       >
         <Header />
         {children}

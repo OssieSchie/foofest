@@ -53,13 +53,14 @@ export default function SelectAmount(props) {
 
   return (
     <form
-      className="grid grid-cols-1 grid-rows-[min-content_1fr] gap-10 p-5 "
+      className="grid grid-cols-1 grid-rows-[min-content_1fr] gap-10 p-5 text-white-off-00"
       onSubmit={handleSubmit(onSubmit)}
     >
       <div className="flex flex-row gap-6 h-16 justify-center">
         <div className="flex flex-col gap-2">
           <label>How many tickets would you like?</label>
           <input
+            className="text-dark-grey-00"
             type="number"
             placeholder="1"
             {...register("amount", { required: true, minLength: 1 })}
@@ -70,13 +71,14 @@ export default function SelectAmount(props) {
 
         {/* ------------------------------------------------------------- */}
 
-        <div className="w-px h-auto bg-slate-500"></div>
+        <div className="w-px h-auto bg-white-off-00"></div>
 
         {/* ------------------------------------------------------------- */}
 
         <div className="flex flex-col gap-2">
           <label>What area would you like to be in?</label>
           <select
+            className="text-dark-grey-00"
             defaultValue="select"
             {...register("area", { required: true })}
           >
@@ -103,14 +105,14 @@ export default function SelectAmount(props) {
         </div>
       </div>
 
-      <div className="h-px w-1/2 bg-slate-500 mx-auto" />
+      <div className="h-px w-1/2 bg-white-off-00 mx-auto" />
 
       {/* ------------------------------------------------------------- */}
 
       <div className="flex flex-col gap-6 text-center">
         <p>Would you like the staff to raise tents for you?</p>
         <div className="grid grid-cols-2 grid-rows-2 w-60 h-52 mx-auto">
-          <label className="flex flex-col w-28 h-24 text-center justify-around border border-slate-500 rounded-md">
+          <label className="flex flex-col w-28 h-24 text-center justify-around border border-white-off-00 rounded-md">
             No thanks
             <input
               {...register("tents", { required: true })}
@@ -120,7 +122,7 @@ export default function SelectAmount(props) {
             <p>0 kr.</p>
           </label>
 
-          <label className="flex flex-col w-28 h-24 text-center justify-around border border-slate-500 rounded-md">
+          <label className="flex flex-col w-28 h-24 text-center justify-around border border-white-off-00 rounded-md">
             2 person tent
             <input
               {...register("tents", { required: true })}
@@ -130,7 +132,7 @@ export default function SelectAmount(props) {
             <p>299 kr.</p>
           </label>
 
-          <label className="flex flex-col w-28 h-24 text-center justify-around border border-slate-500 rounded-md">
+          <label className="flex flex-col w-28 h-24 text-center justify-around border border-white-off-00 rounded-md">
             3 person tent
             <input
               {...register("tents", { required: true })}
@@ -140,7 +142,7 @@ export default function SelectAmount(props) {
             <p>399 kr.</p>
           </label>
 
-          <label className="flex flex-col w-28 h-24 text-center justify-around border border-slate-500 rounded-md">
+          <label className="flex flex-col w-28 h-24 text-center justify-around border border-white-off-00 rounded-md">
             Tents for {ticketAmount}
             <input
               {...register("tents", { required: true })}
@@ -152,11 +154,11 @@ export default function SelectAmount(props) {
         </div>
         {errors.tents && <p>Please select an amount</p>}
       </div>
-      <div className="h-px w-1/2 bg-slate-500 mx-auto" />
+      <div className="h-px w-1/2 bg-white-off-00 mx-auto" />
       <input
         type="submit"
         value="Next"
-        className="border border-slate-500 hover:cursor-pointer h-20 w-36 mx-auto"
+        className="border border-white-off-00 hover:cursor-pointer h-20 w-36 mx-auto"
       />
     </form>
   );

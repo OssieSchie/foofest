@@ -30,7 +30,7 @@ export default function BillingInfo({ finalizePurchase }) {
   //   };
 
   return (
-    <div>
+    <div className="flex flex-col mb-10">
       <div className="grid grid-rows-2 gap-10 my-10 mx-6">
         <div className="m-auto">
           <form className="grid grid-cols-2 grid-rows-2 gap-4 items-center">
@@ -39,7 +39,7 @@ export default function BillingInfo({ finalizePurchase }) {
               <input
                 type="tel"
                 name="number"
-                className="shadow-inner p-1"
+                className="shadow-inner p-1 text-dark-grey-00"
                 placeholder="Card Number"
                 pattern="[\d ]{16,22}"
                 maxLength={16}
@@ -55,7 +55,7 @@ export default function BillingInfo({ finalizePurchase }) {
               <input
                 type="text"
                 name="name"
-                className="shadow-inner p-1"
+                className="shadow-inner p-1 text-dark-grey-00"
                 placeholder="Name"
                 required
                 onChange={handleInputChange}
@@ -67,7 +67,7 @@ export default function BillingInfo({ finalizePurchase }) {
               <input
                 type="tel"
                 name="expiry"
-                className="shadow-inner p-1"
+                className="shadow-inner p-1 text-dark-grey-00"
                 placeholder="Valid Thru"
                 pattern="\d\d/\d\d"
                 required
@@ -82,7 +82,7 @@ export default function BillingInfo({ finalizePurchase }) {
               <input
                 type="tel"
                 name="cvc"
-                className="shadow-inner p-1"
+                className="shadow-inner p-1 text-dark-grey-00"
                 placeholder="CVC"
                 pattern="\d{3,4}"
                 minLength={3}
@@ -106,7 +106,7 @@ export default function BillingInfo({ finalizePurchase }) {
         </div>
       </div>
       <button
-        className="border border-slate-500 hover:cursor-pointer h-auto w-36 mx-auto p-2"
+        className="bg-white-off-00 text-dark-grey-00 font-semibold hover:cursor-pointer hover:[text-shadow:_0_1px_5px_rgb(41,37,37,0.3)] h-auto w-36 mx-auto p-2 rounded-md"
         onClick={() => {
           finalizePurchase();
         }}

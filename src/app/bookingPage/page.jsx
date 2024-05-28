@@ -14,7 +14,7 @@ export default async function page() {
   // console.log(data);
   return (
     <main>
-      <section className="md:max-w-7xl mx-auto">
+      <section>
         <FormWrapper areas={data} />
         {/* <SelectAmount areas={data} /> */}
         {/* <FillTicket />
