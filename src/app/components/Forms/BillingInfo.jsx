@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import ReactCreditCards from "react-credit-cards-2";
 import "react-credit-cards-2/dist/es/styles-compiled.css";
+import Link from "next/link";
 
 export default function BillingInfo({ finalizePurchase }) {
   const [state, setState] = useState({

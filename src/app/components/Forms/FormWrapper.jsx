@@ -9,6 +9,7 @@ import FillTicket from "./FillTicket";
 import BillingInfo from "./BillingInfo";
 import { completeReservation, postParentTicket } from "@/app/lib/api";
 import Summary from "./Summary";
+import FinPurchase from "../FinPurchase";
 
 export default function FormWrapper({ areas }) {
   const [ticketID, setTicketID] = useState(null);
@@ -37,42 +38,45 @@ export default function FormWrapper({ areas }) {
   }
 
   return (
-    <section className="flex flex-col mx-5 md:grid md:grid-cols-5">
-      {/* <div>
+    <section>
+      <section className="flex flex-col mx-5 md:grid md:grid-cols-5">
+        {/* <div>
         <p>id = {ticketID}</p>
         <p>Number of tickets: {ticketAmount}</p>
         <p>{area}</p>
         <p>tents = {tents}</p>
       </div> */}
 
-      <section className="md:col-start-2 md:col-span-3 order-last md:order-first">
-        <SelectAmount
-          areas={areas}
-          ticketAmount={ticketAmount}
-          setTicketAmount={setTicketAmount}
-          setTicketID={setTicketID}
-          setArea={setArea}
-          setTents={setTents}
-        />
-        <FillTicket
-          ticketAmount={ticketAmount}
-          parentTicket={parentTicket}
-          setTotalGreen={setTotalGreen}
-          totalGreen={totalGreen}
-          setTotalVip={setTotalVip}
-          totalVip={totalVip}
-        />
-        <BillingInfo finalizePurchase={finalizePurchase} />
+        <section className="md:col-start-2 md:col-span-3 order-last md:order-first">
+          <SelectAmount
+            areas={areas}
+            ticketAmount={ticketAmount}
+            setTicketAmount={setTicketAmount}
+            setTicketID={setTicketID}
+            setArea={setArea}
+            setTents={setTents}
+          />
+          <FillTicket
+            ticketAmount={ticketAmount}
+            parentTicket={parentTicket}
+            setTotalGreen={setTotalGreen}
+            totalGreen={totalGreen}
+            setTotalVip={setTotalVip}
+            totalVip={totalVip}
+          />
+          <BillingInfo finalizePurchase={finalizePurchase} />
+        </section>
+        <div>
+          <Summary
+            ticketID={ticketID}
+            ticketAmount={ticketAmount}
+            tents={tents}
+            totalGreen={totalGreen}
+            totalVip={totalVip}
+          />
+        </div>
       </section>
-      <div>
-        <Summary
-          ticketID={ticketID}
-          ticketAmount={ticketAmount}
-          tents={tents}
-          totalGreen={totalGreen}
-          totalVip={totalVip}
-        />
-      </div>
+      <FinPurchase />
     </section>
   );
 }
