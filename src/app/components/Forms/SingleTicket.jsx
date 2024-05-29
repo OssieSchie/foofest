@@ -69,6 +69,11 @@ export default function SingleTicket({
             className="border text-dark-grey-00"
             {...register("name", { required: true, minLength: 1 })}
           />
+          {errors.name && (
+            <p className="bg-white-off-00 text-dark-grey-00 mt-1 px-1">
+              Please enter name!
+            </p>
+          )}
         </div>
         <div className="text-center border-t">
           <p className="text-balance">Please select a ticket type</p>
@@ -94,6 +99,11 @@ export default function SingleTicket({
               <p>1299 kr.</p>
             </label>
           </div>
+          {errors.ticket && (
+            <p className="bg-white-off-00 text-dark-grey-00 mt-1 px-1">
+              Select ticket type!
+            </p>
+          )}
         </div>
         <div className="text-center border-t border-b pb-2 flex flex-col gap-2">
           <p className="text-balance">
@@ -118,6 +128,11 @@ export default function SingleTicket({
               />
             </label>
           </div>
+          {errors.greenCamping && (
+            <p className="bg-white-off-00 text-dark-grey-00 mt-1 px-1">
+              Please Select an option!
+            </p>
+          )}
         </div>
         {!isLast && (
           <input
