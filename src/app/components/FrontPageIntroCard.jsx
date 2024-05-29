@@ -1,6 +1,7 @@
 import { rock_salt } from "../fonts";
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function FrontPageIntroCard() {
   return (
@@ -21,12 +22,16 @@ export default function FrontPageIntroCard() {
             Welcome to FooFest!
           </h1>
           <div className="flex space-x-4">
-            <button className="bg-accent-00 text-white-off-00  rounded-lg py-2 px-4 hover:bg-red-700 hover:border-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 transition-colors duration-300">
-              Buy Tickets
-            </button>
-            <button className="bg-accent-00 text-white-off-00  rounded-lg py-2 px-4 hover:bg-red-700 hover:border-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 transition-colors duration-300">
-              Schedule
-            </button>
+            <Link href="/bookingPage">
+              <button className="bg-accent-00 text-white-off-00  rounded-lg py-2 px-4 hover:bg-red-700 hover:border-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 transition-colors duration-300">
+                Buy Tickets
+              </button>
+            </Link>
+            <Link href="/stages">
+              <button className="bg-accent-00 text-white-off-00  rounded-lg py-2 px-4 hover:bg-red-700 hover:border-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 transition-colors duration-300">
+                Schedule
+              </button>
+            </Link>
           </div>
         </div>
       </div>

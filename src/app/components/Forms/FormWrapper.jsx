@@ -8,13 +8,16 @@ import SelectAmount from "./SelectAmount";
 import FillTicket from "./FillTicket";
 import BillingInfo from "./BillingInfo";
 import { completeReservation, postParentTicket } from "@/app/lib/api";
-// import Summary from "../components/Forms/Summary";
+import Summary from "./Summary";
+import FinPurchase from "../FinPurchase";
 
 export default function FormWrapper({ areas }) {
   const [ticketID, setTicketID] = useState(null);
   const [ticketAmount, setTicketAmount] = useState(1);
   const [area, setArea] = useState("");
   const [tents, setTents] = useState(0);
+  const [process, setProcess] = useState(`FinPurchase`);
+  // const [process, setProcess] = useState(`SelectAmount`);
 
   let parentTicket = {
     ticketID: ticketID,
@@ -25,34 +28,83 @@ export default function FormWrapper({ areas }) {
   };
   // ^^omskriv så individuelle tickets er nemmere at tilgå
 
+  const [totalVip, setTotalVip] = useState(0);
+  const [totalGreen, setTotalGreen] = useState(0);
+
   function finalizePurchase() {
     completeReservation(ticketID);
     console.log(`completed reservation for ${ticketID}`);
     const parent = postParentTicket(parentTicket);
     console.log(`posted parent to Supabase:
     ${parent}`);
+
+    setProcess(`FinPurchase`);
   }
 
   return (
-    <section className="md:max-w-7xl mx-auto max-h-svh overflow-scroll">
-      <p>id = {ticketID}</p>
-      <p>Number of tickets: {ticketAmount}</p>
-      <p>{area}</p>
-      <p>tents = {tents}</p>
-      <section>
-        <SelectAmount
-          areas={areas}
-          ticketAmount={ticketAmount}
-          setTicketAmount={setTicketAmount}
-          setTicketID={setTicketID}
-          setArea={setArea}
-          setTents={setTents}
-        />
-        <FillTicket ticketAmount={ticketAmount} parentTicket={parentTicket} />
-        <BillingInfo finalizePurchase={finalizePurchase} />
-        {/* <Summary /> */}
+    <section className="h-full">
+      {/* <p>{process}</p> */}
+      <section className="flex flex-col mx-5 md:grid md:grid-cols-5 h-full">
+        {/* <div>
+        <p>id = {ticketID}</p>
+        <p>Number of tickets: {ticketAmount}</p>
+        <p>{area}</p>
+        <p>tents = {tents}</p>
+      </div> */}
+
+        <section
+          className={`md:col-start-2 md:col-span-3 order-last md:order-first h-full`}
+        >
+          <div
+            className={process === `SelectAmount` ? styles.show : styles.hide}
+          >
+            <SelectAmount
+              areas={areas}
+              ticketAmount={ticketAmount}
+              setTicketAmount={setTicketAmount}
+              setTicketID={setTicketID}
+              setArea={setArea}
+              setTents={setTents}
+              setProcess={setProcess}
+            />
+          </div>
+
+          <div className={process === `FillTicket` ? styles.show : styles.hide}>
+            <FillTicket
+              ticketAmount={ticketAmount}
+              parentTicket={parentTicket}
+              setTotalGreen={setTotalGreen}
+              totalGreen={totalGreen}
+              setTotalVip={setTotalVip}
+              totalVip={totalVip}
+              setProcess={setProcess}
+            />
+          </div>
+
+          <div
+            className={process === `BillingInfo` ? styles.show : styles.hide}
+          >
+            <BillingInfo
+              finalizePurchase={finalizePurchase}
+              setProcess={setProcess}
+            />
+          </div>
+          <div
+            className={process === `FinPurchase` ? styles.show : styles.hide}
+          >
+            <FinPurchase />
+          </div>
+        </section>
+        <div className={process === `FinPurchase` ? styles.hide : styles.show}>
+          <Summary
+            ticketID={ticketID}
+            ticketAmount={ticketAmount}
+            tents={tents}
+            totalGreen={totalGreen}
+            totalVip={totalVip}
+          />
+        </div>
       </section>
-      <div></div>
     </section>
   );
 }

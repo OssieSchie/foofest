@@ -1,1 +1,12 @@
+.show {
+  opacity: 1;
+  overflow: auto;
+  transition: ease-in 0.2;
+  height: 100%;
+}
 
+.hide {
+  height: 0;
+  opacity: 0;
+  overflow: clip;
+}

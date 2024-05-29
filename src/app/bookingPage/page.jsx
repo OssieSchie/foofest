@@ -13,8 +13,8 @@ export default async function page() {
 
   // console.log(data);
   return (
-    <main>
-      <section className="md:max-w-7xl mx-auto">
+    <main className="h-[calc(100svh-8rem)]">
+      <section className="h-full">
         <FormWrapper areas={data} />
         {/* <SelectAmount areas={data} /> */}
         {/* <FillTicket />
