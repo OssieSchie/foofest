@@ -16,8 +16,8 @@ export default function FormWrapper({ areas }) {
   const [ticketAmount, setTicketAmount] = useState(1);
   const [area, setArea] = useState("");
   const [tents, setTents] = useState(0);
-  const [process, setProcess] = useState(`FinPurchase`);
-  // const [process, setProcess] = useState(`SelectAmount`);
+  // const [process, setProcess] = useState(`FinPurchase`);
+  const [process, setProcess] = useState(`SelectAmount`);
 
   let parentTicket = {
     ticketID: ticketID,
