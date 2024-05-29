@@ -10,6 +10,7 @@ export default function FillTicket({
   totalGreen,
   setTotalVip,
   totalVip,
+  setProcess,
 }) {
   // const [isFinal, setIsFinal] = useState(false)
 
@@ -29,6 +30,8 @@ export default function FillTicket({
     // parentTicket.groupedTickets.forEach(group => {
     //   group.forEach(ticket => {if (ticket.isVip==="true")})
     // })
+
+    setProcess(`BillingInfo`);
   }
 
   return (

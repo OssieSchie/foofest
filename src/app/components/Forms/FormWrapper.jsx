@@ -16,6 +16,7 @@ export default function FormWrapper({ areas }) {
   const [ticketAmount, setTicketAmount] = useState(1);
   const [area, setArea] = useState("");
   const [tents, setTents] = useState(0);
+  const [process, setProcess] = useState(`FinPurchase`);
 
   let parentTicket = {
     ticketID: ticketID,
@@ -35,10 +36,13 @@ export default function FormWrapper({ areas }) {
     const parent = postParentTicket(parentTicket);
     console.log(`posted parent to Supabase:
     ${parent}`);
+
+    setProcess(`FinPurchase`);
   }
 
   return (
     <section>
+      <p>{process}</p>
       <section className="flex flex-col mx-5 md:grid md:grid-cols-5">
         {/* <div>
         <p>id = {ticketID}</p>
@@ -47,26 +51,50 @@ export default function FormWrapper({ areas }) {
         <p>tents = {tents}</p>
       </div> */}
 
-        <section className="md:col-start-2 md:col-span-3 order-last md:order-first">
-          <SelectAmount
-            areas={areas}
-            ticketAmount={ticketAmount}
-            setTicketAmount={setTicketAmount}
-            setTicketID={setTicketID}
-            setArea={setArea}
-            setTents={setTents}
-          />
-          <FillTicket
-            ticketAmount={ticketAmount}
-            parentTicket={parentTicket}
-            setTotalGreen={setTotalGreen}
-            totalGreen={totalGreen}
-            setTotalVip={setTotalVip}
-            totalVip={totalVip}
-          />
-          <BillingInfo finalizePurchase={finalizePurchase} />
+        <section
+          className={`md:col-start-2 md:col-span-3 order-last md:order-first`}
+        >
+          <div
+            className={process === `SelectAmount` ? styles.show : styles.hide}
+          >
+            <SelectAmount
+              areas={areas}
+              ticketAmount={ticketAmount}
+              setTicketAmount={setTicketAmount}
+              setTicketID={setTicketID}
+              setArea={setArea}
+              setTents={setTents}
+              setProcess={setProcess}
+            />
+          </div>
+
+          <div className={process === `FillTicket` ? styles.show : styles.hide}>
+            <FillTicket
+              ticketAmount={ticketAmount}
+              parentTicket={parentTicket}
+              setTotalGreen={setTotalGreen}
+              totalGreen={totalGreen}
+              setTotalVip={setTotalVip}
+              totalVip={totalVip}
+              setProcess={setProcess}
+            />
+          </div>
+
+          <div
+            className={process === `BillingInfo` ? styles.show : styles.hide}
+          >
+            <BillingInfo
+              finalizePurchase={finalizePurchase}
+              setProcess={setProcess}
+            />
+          </div>
+          <div
+            className={process === `FinPurchase` ? styles.show : styles.hide}
+          >
+            <FinPurchase />
+          </div>
         </section>
-        <div>
+        <div className={process === `FinPurchase` ? styles.hide : styles.show}>
           <Summary
             ticketID={ticketID}
             ticketAmount={ticketAmount}
@@ -76,7 +104,6 @@ export default function FormWrapper({ areas }) {
           />
         </div>
       </section>
-      <FinPurchase />
     </section>
   );
 }
