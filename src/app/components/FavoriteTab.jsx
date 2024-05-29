@@ -49,7 +49,7 @@ const ToggleButton = styled.button`
   }
 `;
 
-export default function FavoriteTab({ band, name, schedule }) {
+export default function FavoriteTab({ band, name }) {
   const [favoriteActs, setFavoriteActs] = useState(name);
   const [isVisible, setIsVisible] = useState(false);
 

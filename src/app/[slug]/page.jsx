@@ -8,7 +8,7 @@ import Image from "next/image";
 import FavoritedTab from "../components/FavoriteTab";
 
 export const metadata = {
-  title: "Foo Fest",
+  title: "Foofest Band",
   description: "Foo Fest, experience the best music of alle ages!",
 };
 
@@ -20,15 +20,13 @@ async function bandPage({ params }) {
 
   const favoriteData = await getAllfavorited();
 
-  metadata.title = data ? data.name : "Foo Fest Band";
-  metadata.description = data
-    ? data.name
-    : "Foo Fest, experience the best music of alle ages!";
-
-  // console.log(favoriteData);
+  // metadata.title = data ? data.name : "Foo Fest Band";
+  // metadata.description = data
+  //   ? data.bio
+  //   : "Foo Fest, experience the best music of alle ages!";
 
   const filteredData = scheduleData.filter((item) => item.act === data.name);
-
+  // Function to change the abriviation value from the data to the full day name
   function replaceDayAbbreviations(dayAbbreviation) {
     const dayArr = {
       mon: "Monday",
@@ -43,10 +41,6 @@ async function bandPage({ params }) {
     return dayArr[dayAbbreviation] || dayAbbreviation;
   }
 
-  // console.log(filteredData);
-  // console.log(scheduleData);
-  // console.log(data.name);
-
   return (
     <main className="mx-5 md:mx-52 my-5">
       <article>
@@ -59,7 +53,7 @@ async function bandPage({ params }) {
       <section className="flex flex-col gap-10 justify-center items-center">
         <article className="flex flex-col gap-10 sm:flex sm:flex-row items-center">
           <div className="drop-shadow-[0_20px_20px_rgba(0,0,0,0.5)]">
-            {data.logo.startsWith("http") ? ( // Check if image URL is an external link
+            {data.logo.startsWith("http") ? ( // Checks if image URL is an external link
               <Image
                 src={data.logo}
                 width={500}

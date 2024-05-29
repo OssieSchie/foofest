@@ -11,6 +11,7 @@ export default function BandCards(props) {
   const [expanded, setExpanded] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [visibleBands, setVisibleBands] = useState(12);
+  const [errorBands, setErrorBands] = useState([]);
 
   const data = props.data;
   const uniqueGenresArray = [];
@@ -35,7 +36,7 @@ export default function BandCards(props) {
   };
 
   const loadMoreBands = () => {
-    setVisibleBands((prevVisibleBands) => prevVisibleBands + 10);
+    setVisibleBands((prevVisibleBands) => prevVisibleBands + 12);
   };
 
   const expand = () => {
@@ -49,9 +50,14 @@ export default function BandCards(props) {
     }
   });
 
-  //   console.log(uniqueGenresArray);
+  const handleImageError = (slug) => {
+    if (!errorBands.includes(slug)) {
+      setErrorBands((prevErrorBands) => [...prevErrorBands, slug]);
+    }
+  };
+
   return (
-    <section className="flex flex-col gap-5 mb-20">
+    <section className="flex flex-col gap-5 mb-5">
       <div className="flex flex-col items-center sm:flex-row sm:justify-center gap-4 sm:gap-8 md:gap-12 lg:gap-16">
         <input
           type="text"
@@ -108,7 +114,9 @@ export default function BandCards(props) {
               </div>
               <Image
                 src={
-                  bands.logo.includes("http")
+                  errorBands.includes(bands.slug)
+                    ? "/img/fooBG.webp"
+                    : bands.logo.includes("http")
                     ? `${bands.logo}`
                     : `/logos/${bands.logo}`
                 }
@@ -116,6 +124,7 @@ export default function BandCards(props) {
                 height={500}
                 alt="Logo For the Band"
                 priority={true}
+                onError={() => handleImageError(bands.slug)}
                 className="h-full w-full object-cover"
               />
             </Link>
@@ -124,7 +133,7 @@ export default function BandCards(props) {
       </article>
 
       {filteredData.length > visibleBands && (
-        <div className="flex justify-center mt-4">
+        <div className="flex justify-center my-4">
           <button
             onClick={loadMoreBands}
             className="bg-accent-00 text-white border-2 border-accent-00 hover:bg-red-700 hover:border-red-700 focus:outline-none focus:ring-2 focus:ring-red-700 rounded-lg py-2 px-4 transition-colors duration-300"
