@@ -37,7 +37,7 @@ function Stages({ name, mon, tue, wed, thu, fri, sat, sun }) {
           className="hover:font-bold h-[50px] w-full bg-dark-grey-00 text-white-off-00"
           onClick={handleChange}
         >
-          Schedule
+          ↯ Schedule ↯
         </button>
       </div>
 

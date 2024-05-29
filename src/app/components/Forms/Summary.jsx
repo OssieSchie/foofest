@@ -28,7 +28,7 @@ export default function Summary({
           {totalGreen > 0 && (
             <li>
               <p>
-                {totalGreen} green camping initiative{" "}
+                Green camping chosen for {totalGreen}{" "}
                 {totalGreen == 1 ? "ticket" : "tickets"}:
               </p>
               <p>{totalGreen * 249} kr.</p>
@@ -46,7 +46,7 @@ export default function Summary({
           {totalVip > 0 && (
             <li>
               <p>
-                {totalVip} VIP {totalVip == 1 ? "ticket" : "tickets"}
+                {totalVip} VIP {totalVip == 1 ? "ticket" : "tickets"}:
               </p>
               <p>{totalVip * 1299} kr.</p>
             </li>
@@ -55,7 +55,7 @@ export default function Summary({
       </div>
       <div className="mt-4 flex md:flex-col fixed sm:sticky top-12 md:top-16 right-0 z-50 bg-dark-grey-00 md:bg-transparent">
         <h3 className="bg-white-off-00 text-dark-grey-00 px-4 py-2 inline">
-          Total cost:
+          Total cost
         </h3>
         <h3 className="px-4 py-2 inline">
           {99 +

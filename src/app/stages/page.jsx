@@ -14,8 +14,10 @@ export default async function stages() {
   // console.log(data.Midgard);
 
   return (
-    <main className="max-h-svh overflow-scroll md:mx-24 m-1 flex flex-col items-center gap-14 mb-4">
-      <h1>Stages</h1>
+    <main className="max-h-svh overflow-scroll md:mx-24 m-1 flex flex-col items-center mb-4">
+      <h1 className="bg-white-off-00 text-dark-grey-00 px-4 mt-5 mb-8">
+        Stages
+      </h1>
 
       <div className="flex flex-col gap-6">
         <Stages name={"Midgard"} {...Midgard} />

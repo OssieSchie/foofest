@@ -17,6 +17,7 @@ export default function FormWrapper({ areas }) {
   const [area, setArea] = useState("");
   const [tents, setTents] = useState(0);
   const [process, setProcess] = useState(`FinPurchase`);
+  // const [process, setProcess] = useState(`SelectAmount`);
 
   let parentTicket = {
     ticketID: ticketID,
@@ -41,9 +42,9 @@ export default function FormWrapper({ areas }) {
   }
 
   return (
-    <section>
-      <p>{process}</p>
-      <section className="flex flex-col mx-5 md:grid md:grid-cols-5">
+    <section className="h-full">
+      {/* <p>{process}</p> */}
+      <section className="flex flex-col mx-5 md:grid md:grid-cols-5 h-full">
         {/* <div>
         <p>id = {ticketID}</p>
         <p>Number of tickets: {ticketAmount}</p>
@@ -52,7 +53,7 @@ export default function FormWrapper({ areas }) {
       </div> */}
 
         <section
-          className={`md:col-start-2 md:col-span-3 order-last md:order-first`}
+          className={`md:col-start-2 md:col-span-3 order-last md:order-first h-full`}
         >
           <div
             className={process === `SelectAmount` ? styles.show : styles.hide}

@@ -11,6 +11,8 @@ export default function SingleTicket({
   totalGreen,
   setTotalVip,
   totalVip,
+  showTicket,
+  setShowTicket,
 }) {
   const {
     register,
@@ -34,6 +36,8 @@ export default function SingleTicket({
     fillTicket(singleTicket);
     console.log("donezo");
 
+    setShowTicket(showTicket + 1);
+
     if (data.ticket === "true") {
       setTotalVip(totalVip + 1);
       console.log(`set total vip to ${totalVip}`);
@@ -50,7 +54,7 @@ export default function SingleTicket({
   };
 
   return (
-    <div className="border w-96 min-w-96 min-h-30 p-3">
+    <div className="border w-96 min-w-96 min-h-30 p-3 mx-auto">
       <h3>
         Ticket {ticketNr + 1} of {ticketAmount}
       </h3>
