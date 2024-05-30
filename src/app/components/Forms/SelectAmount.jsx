@@ -54,7 +54,7 @@ export default function SelectAmount(props) {
     );
 
     setProcess(`FillTicket`);
-    // setShowTimer(1);
+    setShowTimer(1);
   };
 
   function checkTicketAmount(evt) {

@@ -4,7 +4,7 @@ import React from "react";
 import { useState } from "react";
 // import Progression from "../components/Forms/Progression";
 import SelectAmount from "./SelectAmount";
-// import Timer from "./Timer";
+import Timer from "./Timer";
 import FillTicket from "./FillTicket";
 import BillingInfo from "./BillingInfo";
 import { completeReservation, postParentTicket } from "@/app/lib/api";
@@ -19,7 +19,7 @@ export default function FormWrapper({ areas }) {
   // const [process, setProcess] = useState(`BillingInfo`);
   const [process, setProcess] = useState(`SelectAmount`);
 
-  // const [showTimer, setShowTimer] = useState(0);
+  const [showTimer, setShowTimer] = useState(0);
 
   // let parentTicket = {
   //   ticketID: ticketID,
@@ -49,7 +49,7 @@ export default function FormWrapper({ areas }) {
     ${parent}`);
 
     setProcess(`FinPurchase`);
-    // setShowTimer(0);
+    setShowTimer(0);
   }
 
   return (
@@ -78,7 +78,7 @@ export default function FormWrapper({ areas }) {
               // setTents={setTents}
               setProcess={setProcess}
               setParentTicket={setParentTicket}
-              // setShowTimer={setShowTimer}
+              setShowTimer={setShowTimer}
             />
           </div>
 
@@ -122,9 +122,9 @@ export default function FormWrapper({ areas }) {
             />
           </div>
 
-          {/* <div>
+          <div>
             <Timer showTimer={showTimer} ticketAmount={ticketAmount} />
-          </div> */}
+          </div>
         </div>
       </section>
     </section>
