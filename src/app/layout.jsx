@@ -12,6 +12,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/favIcon.svg" />
+      </head>
       <body
         className={` ${roboto.className} grid grid-cols-1 bg-lighter-grey-00 text-white-off-00`}
       >

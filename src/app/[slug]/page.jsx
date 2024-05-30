@@ -50,8 +50,8 @@ async function bandPage({ params }) {
           schedule={scheduleData}
         />
       </article>
-      <section className="flex flex-col gap-10 justify-center items-center">
-        <article className="flex flex-col gap-10 sm:flex sm:flex-row items-center">
+      <section className="flex flex-col gap-20 justify-center items-center">
+        <article className="flex flex-col gap-28 sm:flex sm:flex-row items-center">
           <div className="drop-shadow-[0_20px_20px_rgba(0,0,0,0.5)]">
             {data.logo.startsWith("http") ? ( // Checks if image URL is an external link
               <Image
