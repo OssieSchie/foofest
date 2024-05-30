@@ -35,7 +35,7 @@ function Header() {
         </Link>
         <Link
           href="/bookingPage"
-          className={`${rock_salt.className} bg-accent-00 text-white border-2 border-accent-00 hover:bg-red-700 hover:border-red-700 focus:outline-none focus:ring-2 focus:ring-red-700 rounded-lg px-4 transition-colors duration-300`}
+          className={`${rock_salt.className} bg-accent-00 text-white border-2 border-accent-00 hover:bg-red-700 hover:border-red-700 focus:outline-none focus:ring-2 focus:ring-red-700 rounded-lg transition-colors pt-2 px-1 duration-300`}
         >
           Buy Ticket
         </Link>

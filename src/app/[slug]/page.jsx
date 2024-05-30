@@ -51,7 +51,7 @@ async function bandPage({ params }) {
         />
       </article>
       <section className="flex flex-col gap-20 justify-center items-center">
-        <article className="flex flex-col gap-28 sm:flex sm:flex-row items-center">
+        <article className="flex flex-col gap-10 sm:gap-28 sm:flex sm:flex-row text-center items-center">
           <div className="drop-shadow-[0_20px_20px_rgba(0,0,0,0.5)]">
             {data.logo.startsWith("http") ? ( // Checks if image URL is an external link
               <Image
@@ -72,10 +72,10 @@ async function bandPage({ params }) {
             )}
           </div>
 
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-10">
             <h1>{data.name}</h1>
 
-            <article className="flex gap-2">
+            <article className="flex gap-2 items-center justify-center">
               <h3 className="bg-white-off-00 text-dark-grey-00 p-2 inline">
                 Genre
               </h3>

@@ -16,6 +16,7 @@ const Container = styled.div`
     props.isVisible ? "-2px 0 5px rgba(0,0,0,0.3)" : "none"};
   text-align: center;
   background-color: rgba(38, 35, 35, 0.5);
+  z-index: 1;
 `;
 
 const ToggleButton = styled.button`
