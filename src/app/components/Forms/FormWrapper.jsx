@@ -10,13 +10,14 @@ import BillingInfo from "./BillingInfo";
 import { completeReservation, postParentTicket } from "@/app/lib/api";
 import Summary from "./Summary";
 import FinPurchase from "../FinPurchase";
+import NoTime from "./NoTime";
 
 export default function FormWrapper({ areas }) {
   const [ticketID, setTicketID] = useState(null);
   const [ticketAmount, setTicketAmount] = useState(1);
   const [area, setArea] = useState("");
   const [tents, setTents] = useState(0);
-  // const [process, setProcess] = useState(`BillingInfo`);
+  // const [process, setProcess] = useState(`NoTime`);
   const [process, setProcess] = useState(`SelectAmount`);
 
   const [showTimer, setShowTimer] = useState(0);
@@ -108,11 +109,27 @@ export default function FormWrapper({ areas }) {
           >
             <FinPurchase />
           </div>
+          <div className={process === `NoTime` ? styles.show : styles.hide}>
+            <NoTime />
+          </div>
         </section>
-        <div className="flex flex-col">
+        <div className="flex flex-row md:flex-col">
           <div
-            className={process === `FinPurchase` ? styles.hide : styles.show}
+            className={
+              process === `FinPurchase` || process === `NoTime`
+                ? styles.hide
+                : styles.show
+            }
           >
+            {showTimer === 1 && (
+              <div>
+                <Timer
+                  showTimer={showTimer}
+                  ticketAmount={ticketAmount}
+                  setProcess={setProcess}
+                />
+              </div>
+            )}
             <Summary
               ticketID={ticketID}
               ticketAmount={ticketAmount}
@@ -120,10 +137,6 @@ export default function FormWrapper({ areas }) {
               totalGreen={totalGreen}
               totalVip={totalVip}
             />
-          </div>
-
-          <div>
-            <Timer showTimer={showTimer} ticketAmount={ticketAmount} />
           </div>
         </div>
       </section>
