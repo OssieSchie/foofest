@@ -4,7 +4,7 @@ import React from "react";
 import { useState } from "react";
 // import Progression from "../components/Forms/Progression";
 import SelectAmount from "./SelectAmount";
-// import Timer from "../components/Forms/Timer";
+// import Timer from "./Timer";
 import FillTicket from "./FillTicket";
 import BillingInfo from "./BillingInfo";
 import { completeReservation, postParentTicket } from "@/app/lib/api";
@@ -18,6 +18,8 @@ export default function FormWrapper({ areas }) {
   const [tents, setTents] = useState(0);
   // const [process, setProcess] = useState(`BillingInfo`);
   const [process, setProcess] = useState(`SelectAmount`);
+
+  // const [showTimer, setShowTimer] = useState(0);
 
   let parentTicket = {
     ticketID: ticketID,
@@ -39,6 +41,7 @@ export default function FormWrapper({ areas }) {
     ${parent}`);
 
     setProcess(`FinPurchase`);
+    // setShowTimer(0);
   }
 
   return (
@@ -66,6 +69,7 @@ export default function FormWrapper({ areas }) {
               setArea={setArea}
               setTents={setTents}
               setProcess={setProcess}
+              // setShowTimer={setShowTimer}
             />
           </div>
 
@@ -95,14 +99,22 @@ export default function FormWrapper({ areas }) {
             <FinPurchase />
           </div>
         </section>
-        <div className={process === `FinPurchase` ? styles.hide : styles.show}>
-          <Summary
-            ticketID={ticketID}
-            ticketAmount={ticketAmount}
-            tents={tents}
-            totalGreen={totalGreen}
-            totalVip={totalVip}
-          />
+        <div className="flex flex-col">
+          <div
+            className={process === `FinPurchase` ? styles.hide : styles.show}
+          >
+            <Summary
+              ticketID={ticketID}
+              ticketAmount={ticketAmount}
+              tents={tents}
+              totalGreen={totalGreen}
+              totalVip={totalVip}
+            />
+          </div>
+
+          {/* <div>
+            <Timer showTimer={showTimer} ticketAmount={ticketAmount} />
+          </div> */}
         </div>
       </section>
     </section>
