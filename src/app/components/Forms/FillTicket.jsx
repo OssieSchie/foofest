@@ -15,15 +15,20 @@ export default function FillTicket({
 }) {
   // const [isFinal, setIsFinal] = useState(false)
 
-  const ticketArray = [];
+  // const ticketArray = [];
+
+  const [ticketArray, setTicketArray] = useState([]);
 
   function fillTicket(newTicket) {
-    ticketArray.push(newTicket);
-    console.log(ticketArray);
+    // ticketArray.push(newTicket);
+    setTicketArray((prevTickets) => [...prevTickets, newTicket]);
+    // console.log("ticketArray: ", ticketArray);
+    console.log(`pushed ${newTicket}`);
+    console.log("ticketArray: ", ticketArray);
   }
 
   function pushToParentTicket() {
-    parentTicket.groupedTickets.push(ticketArray);
+    parentTicket.groupedTickets.push(...ticketArray);
     // parentTicket.index[0].amount = ticketAmount;
     //^Push ticketAmount til amount i parent ticket objektet med generel info
     console.log("pushed ticketArray to parentTicket: ", parentTicket);

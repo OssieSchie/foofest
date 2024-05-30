@@ -12,6 +12,7 @@
     "hamburger-qwik": "^0.1.3",
     "next": "14.2.3",
     "react": "^18",
+    "react-countdown": "^2.3.5",
     "react-credit-cards-2": "^1.0.2",
     "react-dom": "^18",
     "react-hook-form": "^7.51.4",

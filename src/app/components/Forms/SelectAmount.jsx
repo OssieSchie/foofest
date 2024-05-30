@@ -13,6 +13,7 @@ export default function SelectAmount(props) {
     setArea,
     setTents,
     setProcess,
+    setShowTimer,
     ...rest
   } = props;
 
@@ -44,6 +45,7 @@ export default function SelectAmount(props) {
     );
 
     setProcess(`FillTicket`);
+    // setShowTimer(1);
   };
 
   function checkTicketAmount(evt) {
