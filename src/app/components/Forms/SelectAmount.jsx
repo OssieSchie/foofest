@@ -60,6 +60,8 @@ export default function SelectAmount(props) {
   function checkTicketAmount(evt) {
     if (evt < 1) {
       setTicketAmount(1);
+    } else if (evt > 100) {
+      setTicketAmount(99);
     } else {
       setTicketAmount(evt);
     }

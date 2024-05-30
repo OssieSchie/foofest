@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import Countdown from "react-countdown";
 
-export default function Timer({ showTimer, ticketAmount }) {
+export default function Timer({ showTimer, ticketAmount, setProcess }) {
   const [endTime, setEndTime] = useState(null);
   const endTimeRef = useRef(null);
 
@@ -16,15 +16,19 @@ export default function Timer({ showTimer, ticketAmount }) {
     }
   }, [showTimer]);
 
+  function handleFinish() {
+    setProcess(`NoTime`);
+  }
+
   return (
-    <div>
+    <div className="fixed top-12 left-0 md:static">
       {showTimer && endTime && (
-        <div className="flex flex-col gap-2 text-center">
-          <p>
+        <div className="flex flex-col gap-2 text-center my-4 border border-white-off-00 rounded-md md:ml-4">
+          <p className="bg-white-off-00 text-dark-grey-00">
             Please fill your {ticketAmount === 1 ? "ticket" : "tickets"} in the
             allotted time
           </p>
-          <Countdown date={endTime} />
+          <Countdown date={endTime} onComplete={handleFinish} />
         </div>
       )}
     </div>

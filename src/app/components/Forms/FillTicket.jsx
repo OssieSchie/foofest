@@ -52,7 +52,8 @@ export default function FillTicket({
     <div className="grid grid-cols-1 md:grid-cols-4 h-full">
       <div className=" md:col-start-2 md:col-span-2 my-auto">
         <h3 className="p-2 bg-white-off-00 text-dark-grey-00 mb-2">
-          please fill out your {ticketAmount} tickets
+          please fill out your {ticketAmount}{" "}
+          {ticketAmount > 1 ? "tickets" : "ticket"}
         </h3>
         <div>
           {Array.from({ length: ticketAmount }, (_, index) => (
