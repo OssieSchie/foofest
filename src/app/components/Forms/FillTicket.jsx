@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import SingleTicket from "./SingleTicket";
 import styles from "./FillTicket.module.css";
 
@@ -18,17 +18,17 @@ export default function FillTicket({
   // const ticketArray = [];
 
   const [ticketArray, setTicketArray] = useState([]);
+  const ticketArrayRef = useRef(ticketArray);
 
   function fillTicket(newTicket) {
-    // ticketArray.push(newTicket);
-    setTicketArray((prevTickets) => [...prevTickets, newTicket]);
-    // console.log("ticketArray: ", ticketArray);
-    console.log(`pushed ${newTicket}`);
-    console.log("ticketArray: ", ticketArray);
+    const updatedTickets = [...ticketArrayRef.current, newTicket];
+    ticketArrayRef.current = updatedTickets;
+    setTicketArray(updatedTickets);
+    console.log("ticketArray: ", updatedTickets);
   }
 
   function pushToParentTicket() {
-    parentTicket.groupedTickets.push(...ticketArray);
+    parentTicket.groupedTickets.push(...ticketArrayRef.current);
     // parentTicket.index[0].amount = ticketAmount;
     //^Push ticketAmount til amount i parent ticket objektet med generel info
     console.log("pushed ticketArray to parentTicket: ", parentTicket);
