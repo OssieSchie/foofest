@@ -21,14 +21,22 @@ export default function FormWrapper({ areas }) {
 
   // const [showTimer, setShowTimer] = useState(0);
 
-  let parentTicket = {
+  // let parentTicket = {
+  //   ticketID: ticketID,
+  //   amount: ticketAmount,
+  //   area: area,
+  //   tents: tents,
+  //   groupedTickets: [],
+  // };
+  // ^^omskriv så individuelle tickets er nemmere at tilgå
+
+  const [parentTicket, setParentTicket] = useState({
     ticketID: ticketID,
     amount: ticketAmount,
     area: area,
     tents: tents,
     groupedTickets: [],
-  };
-  // ^^omskriv så individuelle tickets er nemmere at tilgå
+  });
 
   const [totalVip, setTotalVip] = useState(0);
   const [totalGreen, setTotalGreen] = useState(0);
@@ -65,10 +73,11 @@ export default function FormWrapper({ areas }) {
               areas={areas}
               ticketAmount={ticketAmount}
               setTicketAmount={setTicketAmount}
-              setTicketID={setTicketID}
-              setArea={setArea}
-              setTents={setTents}
+              // setTicketID={setTicketID}
+              // setArea={setArea}
+              // setTents={setTents}
               setProcess={setProcess}
+              setParentTicket={setParentTicket}
               // setShowTimer={setShowTimer}
             />
           </div>
@@ -76,7 +85,8 @@ export default function FormWrapper({ areas }) {
           <div className={process === `FillTicket` ? styles.show : styles.hide}>
             <FillTicket
               ticketAmount={ticketAmount}
-              parentTicket={parentTicket}
+              // parentTicket={parentTicket}
+              setParentTicket={setParentTicket}
               setTotalGreen={setTotalGreen}
               totalGreen={totalGreen}
               setTotalVip={setTotalVip}

@@ -6,7 +6,7 @@ import styles from "./FillTicket.module.css";
 
 export default function FillTicket({
   ticketAmount,
-  parentTicket,
+  setParentTicket,
   setTotalGreen,
   totalGreen,
   setTotalVip,
@@ -28,10 +28,16 @@ export default function FillTicket({
   }
 
   function pushToParentTicket() {
-    parentTicket.groupedTickets.push(...ticketArrayRef.current);
+    // parentTicket.groupedTickets.push(...ticketArrayRef.current);
+    setParentTicket((prevState) => ({
+      ...prevState,
+      groupedTickets: ticketArrayRef.current,
+    }));
+
     // parentTicket.index[0].amount = ticketAmount;
     //^Push ticketAmount til amount i parent ticket objektet med generel info
-    console.log("pushed ticketArray to parentTicket: ", parentTicket);
+
+    console.log("pushed ticketArray to parentTicket: ");
 
     // parentTicket.groupedTickets.forEach(group => {
     //   group.forEach(ticket => {if (ticket.isVip==="true")})

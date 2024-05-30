@@ -14,6 +14,7 @@ export default function SelectAmount(props) {
     setTents,
     setProcess,
     setShowTimer,
+    setParentTicket,
     ...rest
   } = props;
 
@@ -30,9 +31,17 @@ export default function SelectAmount(props) {
   const onSubmit = async (data) => {
     const response = await reserveSpot(data.area, data.amount);
     console.log(response);
-    setTicketID(response.id);
-    setArea(data.area);
-    setTents(data.tents);
+    // setTicketID(response.id);
+    // setArea(data.area);
+    // setTents(data.tents);
+
+    setParentTicket((prevState) => ({
+      ...prevState,
+      ticketId: response.id,
+      amount: data.amount,
+      area: data.area,
+      tents: data.tents,
+    }));
 
     // hvordan tager jeg fat i det returnerede object fra reserveSpot?
     console.log(
